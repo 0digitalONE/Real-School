@@ -1,0 +1,6 @@
+{
+  "name": "Math Stars - Single Digit Addition Game",
+  "description": "An elementary single-digit addition math learning game with voice feedback, badges, gamified progress dashboard, parent portal, and full offline support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
