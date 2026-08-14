@@ -1,19 +1,1563 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-    <meta name="description" content="An application built with Google AI Studio." />
-    <meta property="og:title" content="My Google AI Studio App" />
-    <meta property="og:description" content="An application built with Google AI Studio." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <script type="module" crossorigin src="/Real-School/assets/index-nme6A9Gv.js"></script>
-    <link rel="stylesheet" crossorigin href="/Real-School/assets/index-DwycAyls.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="_ds/organic-ac287f4f-9a8f-49f6-b49f-965f0b7fcfc6/styles.css">
+  <script src="_ds/organic-ac287f4f-9a8f-49f6-b49f-965f0b7fcfc6/_ds_bundle.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap">
+  <style>
+    :root {
+      --font-body: 'Century Gothic', 'Poppins', 'URW Gothic', 'Avant Garde', system-ui, sans-serif;
+      --font-heading: 'Century Gothic', 'Poppins', 'URW Gothic', 'Avant Garde', system-ui, sans-serif;
+      --color-bg: #ffffff;
+      --color-surface: #f5f6f8;
+      --color-divider: #e4e7ec;
+      --color-neutral-100: #f7f8fa;
+      --color-neutral-200: #eceef2;
+      --color-neutral-300: #dcdfe5;
+      --color-neutral-400: #b9bec7;
+      --color-neutral-500: #8d939e;
+      --color-neutral-600: #6b7280;
+      --color-neutral-700: #4b5563;
+      --color-neutral-800: #333a45;
+      --color-neutral-900: #1f242c;
+      --color-text: #1f242c;
+    }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+    a { color: var(--color-accent-700); text-decoration: none; }
+    a:hover { color: var(--color-accent-800); }
+    button { font-family: var(--font-body); cursor: pointer; }
+    button:focus-visible, input:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    @keyframes ms-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    @keyframes ms-in { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: none; } }
+    @keyframes ms-fall { to { transform: translate(var(--dx), 320px) rotate(var(--rot)); opacity: 0; } }
+  </style>
+</helmet>
 
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: var(--color-bg)">
+
+  <header style="position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--color-bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-divider); padding: 13.2px 26.4px">
+    <div style="max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 17.6px; justify-content: space-between">
+
+      <div style="display: flex; align-items: center; gap: 13.2px">
+        <div style="width: 52px; height: 52px; border-radius: 999px; background: #fff; border: 2px solid var(--color-neutral-200); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 0 var(--color-neutral-200)">
+          <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <defs><clipPath id="flaskHeader"><circle cx="24" cy="29" r="12.6"></circle></clipPath></defs>
+            <g clip-path="url(#flaskHeader)">
+              <rect x="10" y="15" width="14" height="14" fill="#0a8a2a"></rect>
+              <rect x="24" y="15" width="14" height="14" fill="#f5a623"></rect>
+              <rect x="10" y="29" width="14" height="14" fill="#12556b"></rect>
+              <rect x="24" y="29" width="14" height="14" fill="#cf0a2c"></rect>
+            </g>
+            <g stroke="#fff" stroke-width="2.1" stroke-linecap="round">
+              <path d="M14.9 22.6h5.2M17.5 20v5.2"></path>
+              <path d="M27.9 22.6h5.2"></path>
+              <path d="M14.9 35.4h5.2"></path>
+              <path d="M28.6 33.5 33.4 38.3M33.4 33.5 28.6 38.3"></path>
+            </g>
+            <circle cx="30.5" cy="20.1" r="1" fill="#fff"></circle>
+            <circle cx="30.5" cy="25.1" r="1" fill="#fff"></circle>
+            <g stroke="#0b0f2b" stroke-linecap="round" fill="none">
+              <circle cx="24" cy="29" r="12.6" stroke-width="3.2"></circle>
+              <path d="M19.3 8.6v9.2M28.7 8.6v9.2" stroke-width="3.2"></path>
+              <path d="M17 7.4h14" stroke-width="3.4"></path>
+              <path d="M21.4 11.2h3M21.4 13.9h3.4" stroke-width="1.7"></path>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h1 style="font-family: var(--font-heading); font-weight: 700; font-size: 30px; line-height: 1; margin: 0; letter-spacing: -0.01em">{{ appTitle }}</h1>
+          <p style="margin: 4.4px 0 0; font-size: 13px; font-weight: 600; color: var(--color-neutral-600)">Math practice lab &middot; works offline</p>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8.8px; background: var(--color-surface); padding: 8.8px; border-radius: 999px">
+        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 13.2px; border-radius: 999px; background: #8b3ff0; color: #fff; font-weight: 900; font-size: 15px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+          Lvl {{ level }}
+        </span>
+        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 13.2px; border-radius: 999px; background: #fde68a; color: #92400e; font-weight: 900; font-size: 17px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 3.2a.6.6 0 0 1 1 0l2.3 4.7 5.2.75a.6.6 0 0 1 .33 1.03l-3.75 3.66.89 5.16a.6.6 0 0 1-.87.63L12 16.7l-4.62 2.43a.6.6 0 0 1-.87-.63l.89-5.16L3.65 9.68a.6.6 0 0 1 .33-1.03l5.2-.75Z"></path></svg>
+          {{ stars }}
+        </span>
+        <span style="{{ streakStyle }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5Z"></path></svg>
+          {{ streak }}
+        </span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8.8px; flex-wrap: wrap; row-gap: 8.8px; justify-content: flex-end">
+        <button onClick="{{ backToSplash }}" class="btn btn-ghost" style="border-radius: 999px; font-weight: 800; white-space: nowrap">Lab</button>
+        <button onClick="{{ goNumbers }}" style="{{ tabNumStyle }}">Numbers</button>
+        <button onClick="{{ goGame }}" style="{{ tabGameStyle }}">Addition</button>
+        <button onClick="{{ goSub }}" style="{{ tabSubStyle }}">Subtraction</button>
+        <button onClick="{{ goDash }}" style="{{ tabDashStyle }}">Mastery</button>
+        <button onClick="{{ goBadges }}" style="{{ tabBadgeStyle }}">Badges {{ badgeCountLabel }}</button>
+        <button onClick="{{ toggleSound }}" aria-label="Toggle sound" title="Sound and voice" style="{{ soundBtnStyle }}">
+          <sc-if value="{{ soundOn }}" hint-placeholder-val="{{ true }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.7 6.5 8.5H3v7h3.5L11 19.3z"></path><path d="M16 8.5a5 5 0 0 1 0 7"></path><path d="M19.5 5.5a9 9 0 0 1 0 13"></path></svg>
+          </sc-if>
+          <sc-if value="{{ soundOff }}" hint-placeholder-val="{{ false }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.7 6.5 8.5H3v7h3.5L11 19.3z"></path><path d="m16 9 5 6"></path><path d="m21 9-5 6"></path></svg>
+          </sc-if>
+        </button>
+        <button onClick="{{ openPortal }}" class="btn btn-secondary" style="border-radius: 999px; font-weight: 800; white-space: nowrap; flex-shrink: 0">Grown-ups</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="flex: 1; width: 100%; padding: 26.4px 17.6px 70px">
+
+    <sc-if value="{{ tabGame }}" hint-placeholder-val="{{ true }}">
+      <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 26.4px">
+
+        <section class="card elev-md" style="border-radius: var(--radius-lg); padding: 35.2px; display: flex; flex-direction: column; align-items: center; gap: 17.6px; position: relative; overflow: hidden">
+          <div style="position: absolute; top: -70px; right: -70px; width: 200px; height: 200px; border-radius: 999px; background: #dbeefc; opacity: 0.7; pointer-events: none"></div>
+          <div style="position: absolute; bottom: -80px; left: -60px; width: 180px; height: 180px; border-radius: 999px; background: #d6f5e4; opacity: 0.6; pointer-events: none"></div>
+
+          <div style="position: relative; display: flex; align-items: center; gap: 13.2px; background: #fff; border: 2px solid var(--color-neutral-200); border-radius: 999px; padding: 8.8px 8.8px 8.8px 17.6px; box-shadow: var(--shadow-sm)">
+            <span style="font-size: 30px; line-height: 1; animation: ms-bob 2.4s ease-in-out infinite">{{ avatarEmoji }}</span>
+            <span style="font-weight: 800; font-size: 17px">{{ mascotLine }}</span>
+            <button onClick="{{ speakQuestion }}" title="Listen to the question" style="width: 40px; height: 40px; border: none; border-radius: 999px; background: #f59300; color: #fff; box-shadow: 0 4px 0 #c06f00; display: flex; align-items: center; justify-content: center" style-hover="background: #ffa617">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.7 6.5 8.5H3v7h3.5L11 19.3z"></path><path d="M16 8.5a5 5 0 0 1 0 7"></path></svg>
+            </button>
+          </div>
+
+          <div style="position: relative; display: flex; align-items: center; justify-content: center; gap: 17.6px; flex-wrap: wrap">
+            <div style="font-family: var(--font-body); font-weight: 900; font-size: 88px; line-height: 1; padding: 17.6px 26.4px; border-radius: var(--radius-lg); background: #dbeefc; border: 4px solid #7cc4f2; color: #0b5f9e; min-width: 118px; text-align: center">{{ num1 }}</div>
+            <div style="font-family: var(--font-body); font-weight: 900; font-size: 60px; color: #f59300">{{ opSymbol }}</div>
+            <div style="font-family: var(--font-body); font-weight: 900; font-size: 88px; line-height: 1; padding: 17.6px 26.4px; border-radius: var(--radius-lg); background: #fde4ee; border: 4px solid #f7a8c8; color: #b0064c; min-width: 118px; text-align: center">{{ num2 }}</div>
+            <div style="font-family: var(--font-body); font-weight: 900; font-size: 60px; color: #f59300">=</div>
+            <div style="{{ answerTileStyle }}">{{ answerDisplay }}</div>
+          </div>
+
+          <sc-if value="{{ showCounters }}" hint-placeholder-val="{{ true }}">
+            <div style="position: relative; width: 100%; background: #fff8e6; border: 2px solid #f6d67a; border-radius: var(--radius-lg); padding: 17.6px; display: flex; flex-direction: column; gap: 13.2px">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 13.2px">
+                <span style="font-weight: 900; font-size: 16px; color: #8a5a00">{{ trayHint }}</span>
+                <span class="tag tag-accent" style="font-weight: 800">Counted: {{ countedCount }}</span>
+              </div>
+              <div style="{{ trayGridStyle }}">
+                <div style="display: flex; flex-wrap: wrap; gap: 8.8px; padding: 13.2px; border-radius: var(--radius-md); background: #dbeefc; border: 2px solid #a8d6f5; min-width: 64px; min-height: 64px; align-items: center; justify-content: center">
+                  <sc-for list="{{ dots1 }}" as="dot" hint-placeholder-count="3">
+                    <button onClick="{{ dot.onClick }}" style="{{ dot.style }}">{{ dot.icon }}</button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ opAdd }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-family: var(--font-body); font-weight: 900; font-size: 34px; color: #f59300">+</span>
+                </sc-if>
+                <sc-if value="{{ opAdd }}" hint-placeholder-val="{{ true }}">
+                  <div style="display: flex; flex-wrap: wrap; gap: 8.8px; padding: 13.2px; border-radius: var(--radius-md); background: #fde4ee; border: 2px solid #f7a8c8; min-width: 64px; min-height: 64px; align-items: center; justify-content: center">
+                    <sc-for list="{{ dots2 }}" as="dot" hint-placeholder-count="2">
+                      <button onClick="{{ dot.onClick }}" style="{{ dot.style }}">{{ dot.icon }}</button>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+        </section>
+
+        <sc-if value="{{ modeChoice }}" hint-placeholder-val="{{ true }}">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 17.6px">
+            <sc-for list="{{ options }}" as="opt" hint-placeholder-count="4">
+              <button onClick="{{ opt.onClick }}" style="{{ opt.style }}">{{ opt.value }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ modeKeypad }}" hint-placeholder-val="{{ false }}">
+          <div class="card elev-sm" style="max-width: 380px; margin: 0 auto; width: 100%; border-radius: var(--radius-lg); padding: 17.6px; display: flex; flex-direction: column; gap: 13.2px">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 13.2px">
+              <sc-for list="{{ keys }}" as="key" hint-placeholder-count="10">
+                <button onClick="{{ key.onClick }}" style="{{ key.style }}">{{ key.label }}</button>
+              </sc-for>
+            </div>
+            <button onClick="{{ submitKeypad }}" class="btn btn-primary" style="border-radius: 999px; padding: 17.6px; font-size: 20px; font-weight: 800">Check my answer</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ modeVisual }}" hint-placeholder-val="{{ false }}">
+          <div class="card elev-sm" style="border-radius: var(--radius-lg); padding: 26.4px; display: flex; flex-direction: column; align-items: center; gap: 17.6px">
+            <p style="margin: 0; font-weight: 800; color: var(--color-neutral-700)">{{ pickLabel }}</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 13.2px">
+              <sc-for list="{{ visualVals }}" as="v" hint-placeholder-count="19">
+                <button onClick="{{ v.onClick }}" style="{{ v.style }}">{{ v.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ feedbackShown }}" hint-placeholder-val="{{ false }}">
+          <div style="{{ feedbackStyle }}">
+            <div style="display: flex; align-items: center; gap: 17.6px">
+              <span style="font-size: 40px; line-height: 1">{{ feedbackEmoji }}</span>
+              <div>
+                <h3 style="font-family: var(--font-heading); font-weight: 700; font-size: 28px; margin: 0; line-height: 1.1">{{ feedbackTitle }}</h3>
+                <p style="margin: 4.4px 0 0; font-weight: 700; font-size: 16px">{{ feedbackMessage }}</p>
+              </div>
+            </div>
+            <button onClick="{{ nextProblem }}" style="border: none; border-radius: 999px; padding: 13.2px 26.4px; background: var(--color-neutral-100); color: var(--color-neutral-900); font-weight: 800; font-size: 17px; flex-shrink: 0">Next &rarr;</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ tabNumbers }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 26.4px">
+
+        <section class="card elev-md" style="border-radius: var(--radius-lg); padding: 35.2px; display: flex; flex-direction: column; align-items: center; gap: 22px; position: relative; overflow: hidden">
+          <div style="position: absolute; top: -70px; right: -70px; width: 200px; height: 200px; border-radius: 999px; background: #ece0fd; opacity: 0.8; pointer-events: none"></div>
+
+          <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8.8px; text-align: center">
+            <h2 style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; margin: 0">Which number do you hear?</h2>
+            <p style="margin: 0; font-weight: 700; font-size: 16px; color: var(--color-neutral-600)">Numbers {{ numRangeLabel }}</p>
+          </div>
+
+          <button onClick="{{ repeatNumber }}" title="Hear the number again" style="position: relative; width: 132px; height: 132px; border: none; border-radius: 999px; background: #f59300; color: #fff; box-shadow: 0 8px 0 #c06f00; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; animation: ms-bob 3s ease-in-out infinite" style-hover="background: #ffa617">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4.7 6.5 8.5H3v7h3.5L11 19.3z"></path><path d="M16 8.5a5 5 0 0 1 0 7"></path><path d="M19.5 5.5a9 9 0 0 1 0 13"></path></svg>
+            <span style="font-weight: 900; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase">Play it</span>
+          </button>
+
+          <sc-if value="{{ voiceBlocked }}" hint-placeholder-val="{{ false }}">
+            <div style="position: relative; display: flex; align-items: center; gap: 13.2px; padding: 13.2px 22px; border-radius: var(--radius-lg); background: #fff8e6; border: 2px solid #f6d67a">
+              <span style="font-weight: 800; font-size: 14px; color: #8a5a00; text-align: left">No sound? This device blocked the voice. Check the volume, then tap &ldquo;Play it&rdquo; again.</span>
+              <button onClick="{{ retryVoice }}" style="border: none; border-radius: 999px; padding: 10px 18px; background: #f59300; color: #fff; font-weight: 900; font-size: 14px; box-shadow: 0 4px 0 #c06f00; flex-shrink: 0">Try again</button>
+            </div>
+          </sc-if>
+
+          <div style="position: relative; display: flex; gap: 13.2px; flex-wrap: wrap; justify-content: center">
+            <span class="tag tag-neutral" style="font-weight: 800">{{ numScoreLabel }}</span>
+            <span class="tag tag-accent-2" style="font-weight: 800">{{ numRunLabel }}</span>
+          </div>
+        </section>
+
+        <div style="display: flex; gap: 17.6px; flex-wrap: wrap">
+          <sc-for list="{{ numOptions }}" as="opt" hint-placeholder-count="3">
+            <button onClick="{{ opt.onClick }}" style="{{ opt.style }}">{{ opt.label }}</button>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ numFeedbackShown }}" hint-placeholder-val="{{ false }}">
+          <div style="{{ numFeedbackStyle }}">
+            <div style="display: flex; align-items: center; gap: 17.6px">
+              <span style="font-size: 40px; line-height: 1">{{ numFeedbackEmoji }}</span>
+              <div>
+                <h3 style="font-family: var(--font-heading); font-weight: 700; font-size: 26px; margin: 0; line-height: 1.1">{{ numFeedbackTitle }}</h3>
+                <p style="margin: 4.4px 0 0; font-weight: 700; font-size: 16px">{{ numFeedbackMessage }}</p>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <section class="card elev-sm" style="border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; gap: 13.2px">
+          <span style="font-weight: 900; font-size: 15px; color: var(--color-neutral-700)">Number range</span>
+          <div style="display: flex; gap: 13.2px; flex-wrap: wrap">
+            <sc-for list="{{ numLevels }}" as="lv" hint-placeholder-count="5">
+              <button onClick="{{ lv.onClick }}" style="{{ lv.style }}">
+                <span>{{ lv.label }}</span>
+                <span style="{{ lv.subStyle }}">{{ lv.sub }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ tabDash }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 26.4px">
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 17.6px">
+          <div style="border-radius: var(--radius-lg); padding: 26.4px; background: var(--color-accent-2-700); color: var(--color-accent-2-100); box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 13.2px">
+            <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8">Current level</span>
+            <div style="font-family: var(--font-heading); font-size: 44px; line-height: 1; color: #fff">Level {{ level }}</div>
+            <span style="font-size: 13px; font-weight: 700">{{ xpLabel }}</span>
+            <div style="height: 12px; border-radius: 999px; background: color-mix(in srgb, #000 25%, transparent); overflow: hidden">
+              <div style="{{ xpBarStyle }}"></div>
+            </div>
+          </div>
+
+          <div style="border-radius: var(--radius-lg); padding: 26.4px; background: var(--color-accent); color: #fff; box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 8.8px">
+            <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85">Total stars</span>
+            <div style="font-family: var(--font-heading); font-size: 52px; line-height: 1">{{ stars }}</div>
+            <span style="font-size: 13px; font-weight: 700; opacity: 0.9">Shiny stars earned</span>
+          </div>
+
+          <div style="border-radius: var(--radius-lg); padding: 26.4px; background: var(--color-surface); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 8.8px">
+            <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-600)">Accuracy</span>
+            <div style="font-family: var(--font-heading); font-size: 52px; line-height: 1; color: var(--color-accent-2-700)">{{ accuracy }}%</div>
+            <span style="font-size: 13px; font-weight: 700; color: var(--color-neutral-700)">{{ accuracyDetail }}</span>
+            <span class="tag tag-outline" style="width: fit-content; font-weight: 800">{{ accuracyNote }}</span>
+          </div>
+
+          <div style="border-radius: var(--radius-lg); padding: 26.4px; background: var(--color-surface); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 8.8px">
+            <span style="font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-600)">Best streak</span>
+            <div style="font-family: var(--font-heading); font-size: 52px; line-height: 1; color: var(--color-accent-700)">{{ bestStreak }}</div>
+            <span style="font-size: 13px; font-weight: 700; color: var(--color-neutral-700)">Right answers in a row</span>
+            <span class="tag tag-accent" style="width: fit-content; font-weight: 800">Now: {{ streak }}</span>
+          </div>
+        </div>
+
+        <section class="card elev-sm" style="border-radius: var(--radius-lg); padding: 35.2px">
+          <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 13.2px; margin-bottom: 26.4px">
+            <div>
+              <h2 style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; margin: 0">Fact family mastery</h2>
+              <p style="margin: 4.4px 0 0; font-weight: 600; color: var(--color-neutral-600)">How each single digit 0&ndash;9 is going</p>
+            </div>
+            <div style="display: flex; gap: 8.8px; flex-wrap: wrap">
+              <span class="tag tag-accent-2" style="font-weight: 800">Mastered 85%+</span>
+              <span class="tag tag-accent" style="font-weight: 800">Learning</span>
+              <span class="tag tag-neutral" style="font-weight: 800">Needs practice</span>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 17.6px">
+            <sc-for list="{{ families }}" as="fam" hint-placeholder-count="10">
+              <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px; display: flex; flex-direction: column; gap: 8.8px">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8.8px">
+                  <span style="font-family: var(--font-heading); font-size: 30px; line-height: 1">+{{ fam.digit }}</span>
+                  <span style="{{ fam.statusStyle }}">{{ fam.status }}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: 800; color: var(--color-neutral-600)">
+                  <span>Accuracy</span>
+                  <span>{{ fam.accLabel }}</span>
+                </div>
+                <div style="height: 10px; border-radius: 999px; background: var(--color-neutral-300); overflow: hidden">
+                  <div style="{{ fam.barStyle }}"></div>
+                </div>
+                <span style="font-size: 12px; font-weight: 700; color: var(--color-neutral-500)">{{ fam.solvedLabel }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section class="card elev-sm" style="border-radius: var(--radius-lg); padding: 35.2px">
+          <h3 style="font-family: var(--font-heading); font-weight: 700; font-size: 28px; margin: 0 0 17.6px">Recent activity</h3>
+          <sc-if value="{{ historyEmpty }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; padding: 26.4px 0; text-align: center; font-weight: 700; color: var(--color-neutral-500)">Nothing yet &mdash; head to Play to earn the first stars.</p>
+          </sc-if>
+          <div style="display: flex; flex-direction: column; max-height: 340px; overflow-y: auto">
+            <sc-for list="{{ history }}" as="h" hint-placeholder-count="0">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 13.2px; padding: 13.2px 0; border-top: 1px solid var(--color-divider)">
+                <div style="display: flex; align-items: center; gap: 13.2px">
+                  <span style="{{ h.dotStyle }}"></span>
+                  <span style="font-weight: 800; font-size: 17px">{{ h.equation }}</span>
+                  <sc-if value="{{ h.wrong }}" hint-placeholder-val="{{ false }}">
+                    <span class="tag tag-neutral" style="font-weight: 800">Said {{ h.userAnswer }}</span>
+                  </sc-if>
+                </div>
+                <div style="display: flex; gap: 13.2px; font-size: 13px; font-weight: 700; color: var(--color-neutral-500)">
+                  <span>{{ h.seconds }}s</span>
+                  <span>{{ h.time }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ tabBadges }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 26.4px">
+
+        <section class="card elev-sm" style="border-radius: var(--radius-lg); padding: 35.2px">
+          <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 13.2px; margin-bottom: 26.4px">
+            <div>
+              <h2 style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; margin: 0">Choose your math buddy</h2>
+              <p style="margin: 4.4px 0 0; font-weight: 600; color: var(--color-neutral-600)">Level up to unlock new characters</p>
+            </div>
+            <span class="tag tag-accent-2" style="font-weight: 800">Level {{ level }}</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 17.6px">
+            <sc-for list="{{ avatars }}" as="av" hint-placeholder-count="8">
+              <button onClick="{{ av.onClick }}" style="{{ av.style }}">
+                <span style="width: 72px; height: 72px; border-radius: 999px; background: var(--color-neutral-100); display: flex; align-items: center; justify-content: center; font-size: 36px">{{ av.emoji }}</span>
+                <span style="font-weight: 800; font-size: 17px">{{ av.name }}</span>
+                <span style="{{ av.statusStyle }}">{{ av.status }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+
+        <section class="card elev-sm" style="border-radius: var(--radius-lg); padding: 35.2px">
+          <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 13.2px; margin-bottom: 26.4px">
+            <div>
+              <h2 style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; margin: 0">Trophy room</h2>
+              <p style="margin: 4.4px 0 0; font-weight: 600; color: var(--color-neutral-600)">Earn badges by mastering facts and building streaks</p>
+            </div>
+            <span class="tag tag-accent" style="font-weight: 800">{{ badgeProgress }}</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 17.6px">
+            <sc-for list="{{ badges }}" as="b" hint-placeholder-count="10">
+              <div style="{{ b.cardStyle }}">
+                <span style="{{ b.iconStyle }}">
+                  <sc-if value="{{ b.unlocked }}" hint-placeholder-val="{{ true }}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+                  </sc-if>
+                  <sc-if value="{{ b.locked }}" hint-placeholder-val="{{ false }}">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  </sc-if>
+                </span>
+                <div style="display: flex; flex-direction: column; gap: 4.4px">
+                  <h3 style="font-family: var(--font-heading); font-weight: 700; font-size: 21px; margin: 0; line-height: 1.15">{{ b.title }}</h3>
+                  <p style="margin: 0; font-size: 14px; font-weight: 600; color: var(--color-neutral-700)">{{ b.description }}</p>
+                  <span style="font-size: 12px; font-weight: 800; color: var(--color-neutral-500); margin-top: 4.4px">{{ b.reqLabel }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+  </main>
+
+  <sc-if value="{{ portalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 50; background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 17.6px">
+      <div style="background: var(--color-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 100%; max-width: 760px; max-height: 90vh; overflow-y: auto; padding: 35.2px; animation: ms-in 0.25s ease-out">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 17.6px; margin-bottom: 26.4px">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-weight: 700; font-size: 30px; margin: 0">Parent &amp; teacher portal</h2>
+            <p style="margin: 4.4px 0 0; font-weight: 600; color: var(--color-neutral-600)">Difficulty adjustments, learning analytics and privacy settings</p>
+          </div>
+          <button onClick="{{ closePortal }}" aria-label="Close" style="width: 40px; height: 40px; border: none; border-radius: 999px; background: var(--color-surface); color: var(--color-neutral-700); font-size: 18px; font-weight: 800; flex-shrink: 0">&times;</button>
+        </div>
+
+        <sc-if value="{{ pinLocked }}" hint-placeholder-val="{{ true }}">
+          <div style="max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 13.2px; text-align: center">
+            <span style="width: 64px; height: 64px; border-radius: 999px; background: var(--color-accent-200); color: var(--color-accent-800); display: flex; align-items: center; justify-content: center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </span>
+            <h3 style="font-family: var(--font-heading); font-weight: 700; font-size: 26px; margin: 0">Grown-ups verification</h3>
+            <p style="margin: 0; font-weight: 600; color: var(--color-neutral-600)">Solve this math problem, or enter the PIN, to open settings.</p>
+            <div style="width: 100%; background: var(--color-surface); border-radius: var(--radius-md); padding: 17.6px; font-family: var(--font-heading); font-size: 24px">{{ gateQuestion }}</div>
+            <input class="input" type="number" value="{{ gateAnswer }}" onChange="{{ onGateAnswer }}" placeholder="Enter answer" style="border-radius: 999px; text-align: center; font-weight: 800; width: 100%" />
+            <span style="font-size: 13px; font-weight: 700; color: var(--color-neutral-500)">Or enter the parent PIN (default 1234)</span>
+            <input class="input" type="password" inputmode="numeric" value="{{ pinEntry }}" onChange="{{ onPinChange }}" placeholder="Parent PIN" style="border-radius: 999px; text-align: center; font-weight: 800; width: 100%" />
+            <sc-if value="{{ pinError }}" hint-placeholder-val="{{ false }}">
+              <span style="font-weight: 800; color: var(--color-accent-700)">That verification answer isn't right. Please try again.</span>
+            </sc-if>
+            <button onClick="{{ submitPin }}" class="btn btn-primary" style="border-radius: 999px; font-weight: 800; width: 100%; padding: 13.2px">Verify and open portal</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ pinUnlocked }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 26.4px">
+            <div style="display: flex; gap: 8.8px; flex-wrap: wrap; border-bottom: 1px solid var(--color-divider); padding-bottom: 17.6px">
+              <sc-for list="{{ portalTabs }}" as="pt" hint-placeholder-count="3">
+                <button onClick="{{ pt.onClick }}" style="{{ pt.style }}">{{ pt.label }}</button>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ pAnalytics }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 17.6px">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 13.2px">
+                  <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px">
+                    <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-600)">Total problems solved</span>
+                    <div style="font-family: var(--font-heading); font-size: 32px; line-height: 1.1; margin-top: 4.4px">{{ totalSolved }}</div>
+                  </div>
+                  <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px">
+                    <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-600)">Overall accuracy</span>
+                    <div style="font-family: var(--font-heading); font-size: 32px; line-height: 1.1; margin-top: 4.4px; color: var(--color-accent-2-700)">{{ accuracy }}%</div>
+                  </div>
+                  <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px">
+                    <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-600)">Longest streak</span>
+                    <div style="font-family: var(--font-heading); font-size: 32px; line-height: 1.1; margin-top: 4.4px; color: var(--color-accent-700)">{{ bestStreak }}</div>
+                  </div>
+                </div>
+
+                <sc-if value="{{ hasWeakFacts }}" hint-placeholder-val="{{ false }}">
+                  <div style="background: var(--color-accent-100); border-radius: var(--radius-md); padding: 17.6px; display: flex; gap: 13.2px; align-items: flex-start">
+                    <span style="color: var(--color-accent-700); flex-shrink: 0; margin-top: 2px">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+                    </span>
+                    <div>
+                      <h4 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 19px; color: var(--color-accent-800)">Targeted practice recommendation</h4>
+                      <p style="margin: 4.4px 0 0; font-size: 14px; font-weight: 700; color: var(--color-accent-800)">{{ weakFactsText }}</p>
+                    </div>
+                  </div>
+                </sc-if>
+
+                <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px">
+                  <h4 style="margin: 0 0 13.2px; font-weight: 800; font-size: 15px">Single-digit fact family performance</h4>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8.8px">
+                    <sc-for list="{{ factRows }}" as="fr" hint-placeholder-count="10">
+                      <div style="background: var(--color-bg); border-radius: var(--radius-sm); padding: 13.2px; text-align: center">
+                        <div style="font-weight: 800; font-size: 16px">+{{ fr.digit }} facts</div>
+                        <div style="{{ fr.accStyle }}">{{ fr.accLabel }}</div>
+                        <div style="font-size: 11px; font-weight: 700; color: var(--color-neutral-500)">{{ fr.countLabel }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ pSettings }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 17.6px">
+                <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px; display: flex; flex-direction: column; gap: 13.2px">
+                  <h4 style="margin: 0; font-weight: 800; font-size: 16px">Digit range and sum limits</h4>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 13.2px">
+                    <label class="field" style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 800">
+                      Minimum digit
+                      <select class="input" value="{{ minDigit }}" onChange="{{ onMinDigit }}" style="border-radius: 999px; font-weight: 700">
+                        <option value="0">0 (includes 0 + X)</option>
+                        <option value="1">1 (starts at 1)</option>
+                      </select>
+                    </label>
+                    <label class="field" style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 800">
+                      Maximum digit
+                      <select class="input" value="{{ maxDigit }}" onChange="{{ onMaxDigit }}" style="border-radius: 999px; font-weight: 700">
+                        <option value="5">5 (beginner: 0–5)</option>
+                        <option value="9">9 (full single digits: 0–9)</option>
+                      </select>
+                    </label>
+                    <label class="field" style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 800">
+                      Maximum sum limit
+                      <select class="input" value="{{ sumLimit }}" onChange="{{ onSumLimit }}" style="border-radius: 999px; font-weight: 700">
+                        <option value="10">Sums up to 10 (5 + 5)</option>
+                        <option value="18">Sums up to 18 (9 + 9)</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
+
+                <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px; display: flex; flex-direction: column; gap: 13.2px">
+                  <h4 style="margin: 0; font-weight: 800; font-size: 16px">Question format and input mode</h4>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8.8px">
+                    <sc-for list="{{ modeOptions }}" as="m" hint-placeholder-count="3">
+                      <button onClick="{{ m.onClick }}" style="{{ m.style }}">
+                        <span style="font-weight: 800; font-size: 15px">{{ m.label }}</span>
+                        <span style="{{ m.subStyle }}">{{ m.sub }}</span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+
+                <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px; display: flex; flex-direction: column; gap: 13.2px">
+                  <h4 style="margin: 0; font-weight: 800; font-size: 16px">Voice feedback and audio</h4>
+                  <sc-for list="{{ toggles }}" as="t" hint-placeholder-count="3">
+                    <button onClick="{{ t.onClick }}" style="{{ t.style }}">
+                      <span>{{ t.label }}</span>
+                      <span style="{{ t.pillStyle }}">{{ t.state }}</span>
+                    </button>
+                  </sc-for>
+                  <label style="display: flex; align-items: center; gap: 13.2px; font-weight: 700; font-size: 15px; background: var(--color-bg); border-radius: 999px; padding: 13.2px 17.6px">
+                    <span style="width: 150px">Speech speed: {{ voiceRateLabel }}</span>
+                    <input type="range" min="0.7" max="1.3" step="0.1" value="{{ voiceRate }}" onChange="{{ onVoiceRate }}" style="flex: 1; accent-color: var(--color-accent)" />
+                  </label>
+                </div>
+
+                <div style="background: var(--color-accent-100); border-radius: var(--radius-md); padding: 17.6px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 13.2px">
+                  <div>
+                    <h5 style="margin: 0; font-weight: 800; font-size: 15px; color: var(--color-accent-800)">Reset student progress</h5>
+                    <p style="margin: 4.4px 0 0; font-size: 13px; font-weight: 700; color: var(--color-accent-700)">{{ progressSummary }}</p>
+                  </div>
+                  <button onClick="{{ resetProgress }}" class="btn btn-primary" style="border-radius: 999px; font-weight: 800; white-space: nowrap">Reset data</button>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ pPrivacy }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 13.2px">
+                <div style="background: var(--color-accent-2-100); border-radius: var(--radius-md); padding: 26.4px; display: flex; gap: 17.6px; align-items: flex-start">
+                  <span style="color: var(--color-accent-2-700); flex-shrink: 0">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                  </span>
+                  <div>
+                    <h3 style="margin: 0; font-family: var(--font-heading); font-weight: 700; font-size: 24px; color: var(--color-accent-2-800)">Child privacy and safety compliance</h3>
+                    <p style="margin: 8.8px 0 0; font-size: 14px; font-weight: 700; color: var(--color-accent-2-800); line-height: 1.5">Mr. Riehl’s Math Lab is built to child safety standards in line with COPPA and FERPA.</p>
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 13.2px">
+                  <sc-for list="{{ privacyCards }}" as="pc" hint-placeholder-count="4">
+                    <div style="background: var(--color-neutral-100); border-radius: var(--radius-md); padding: 17.6px">
+                      <span style="display: block; font-weight: 800; font-size: 15px; margin-bottom: 6px">{{ pc.title }}</span>
+                      <span style="font-size: 13px; font-weight: 600; color: var(--color-neutral-700); line-height: 1.5">{{ pc.body }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ badgeModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 17.6px">
+      <div style="background: var(--color-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 100%; max-width: 420px; padding: 35.2px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 13.2px; animation: ms-in 0.25s ease-out">
+        <span class="tag tag-accent" style="font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase">New badge unlocked</span>
+        <span style="width: 104px; height: 104px; border-radius: 999px; background: var(--color-accent); color: #fff; display: flex; align-items: center; justify-content: center; animation: ms-bob 2s ease-in-out infinite">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+        </span>
+        <h3 style="font-family: var(--font-heading); font-weight: 700; font-size: 32px; margin: 0">{{ newBadgeTitle }}</h3>
+        <p style="margin: 0; font-weight: 600; color: var(--color-neutral-700)">{{ newBadgeDescription }}</p>
+        <button onClick="{{ dismissBadge }}" class="btn btn-primary" style="border-radius: 999px; font-weight: 800; width: 100%; padding: 17.6px; font-size: 18px">Collect it</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSplash }}" hint-placeholder-val="{{ true }}">
+    <div style="position: fixed; inset: 0; z-index: 50; background: var(--color-bg); overflow: auto; padding: 52px 26.4px 70px">
+      <div style="max-width: 940px; margin: 0 auto; display: flex; flex-direction: column; gap: 35.2px">
+
+        <div style="display: flex; align-items: center; gap: 17.6px; flex-wrap: wrap">
+          <div style="width: 70px; height: 70px; border-radius: 999px; background: #fff; border: 2px solid var(--color-neutral-200); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 0 var(--color-neutral-200); flex-shrink: 0; animation: ms-bob 4s ease-in-out infinite">
+            <svg width="46" height="46" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <defs><clipPath id="flaskSplash"><circle cx="24" cy="29" r="12.6"></circle></clipPath></defs>
+            <g clip-path="url(#flaskSplash)">
+              <rect x="10" y="15" width="14" height="14" fill="#0a8a2a"></rect>
+              <rect x="24" y="15" width="14" height="14" fill="#f5a623"></rect>
+              <rect x="10" y="29" width="14" height="14" fill="#12556b"></rect>
+              <rect x="24" y="29" width="14" height="14" fill="#cf0a2c"></rect>
+            </g>
+            <g stroke="#fff" stroke-width="2.1" stroke-linecap="round">
+              <path d="M14.9 22.6h5.2M17.5 20v5.2"></path>
+              <path d="M27.9 22.6h5.2"></path>
+              <path d="M14.9 35.4h5.2"></path>
+              <path d="M28.6 33.5 33.4 38.3M33.4 33.5 28.6 38.3"></path>
+            </g>
+            <circle cx="30.5" cy="20.1" r="1" fill="#fff"></circle>
+            <circle cx="30.5" cy="25.1" r="1" fill="#fff"></circle>
+            <g stroke="#0b0f2b" stroke-linecap="round" fill="none">
+              <circle cx="24" cy="29" r="12.6" stroke-width="3.2"></circle>
+              <path d="M19.3 8.6v9.2M28.7 8.6v9.2" stroke-width="3.2"></path>
+              <path d="M17 7.4h14" stroke-width="3.4"></path>
+              <path d="M21.4 11.2h3M21.4 13.9h3.4" stroke-width="1.7"></path>
+            </g>
+          </svg>
+          </div>
+          <div style="flex: 1; min-width: 260px">
+            <h1 style="font-family: var(--font-heading); font-weight: 700; font-size: 46px; line-height: 1.05; margin: 0; letter-spacing: -0.015em">Mr. Riehl’s Math Lab</h1>
+            <p style="margin: 8.8px 0 0; font-size: 17px; font-weight: 600; color: var(--color-neutral-700)">Pick a station to start practising</p>
+          </div>
+          <span class="tag tag-accent-2" style="font-weight: 800">Lvl {{ level }} &middot; {{ stars }} stars</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17.6px">
+          <sc-for list="{{ stations }}" as="st" hint-placeholder-count="16">
+            <button onClick="{{ st.onClick }}" disabled="{{ st.disabled }}" style="{{ st.style }}">
+              <span style="{{ st.glyphStyle }}">{{ st.glyph }}</span>
+              <span style="{{ st.titleStyle }}">{{ st.title }}</span>
+              <sc-if value="{{ st.soon }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-neutral-600)">Soon</span>
+              </sc-if>
+              <sc-if value="{{ st.open }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; opacity: 0.9">Play now</span>
+              </sc-if>
+            </button>
+          </sc-for>
+        </div>
+
+        <div style="display: flex; gap: 13.2px; flex-wrap: wrap; align-items: center">
+          <button onClick="{{ openPortal }}" class="btn btn-secondary" style="border-radius: 999px; font-weight: 800">Grown-ups</button>
+          <p style="margin: 0; font-size: 14px; font-weight: 600; color: var(--color-neutral-600)">Numbers, Addition and Subtraction are open &mdash; the other stations are being built.</p>
+        </div>
+
+      </div>
+    </div>
+  </sc-if>
+
+  <div ref="{{ confettiRef }}" style="position: fixed; inset: 0; pointer-events: none; z-index: 70; overflow: hidden"></div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;appTitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Mr. Riehl’s Math Lab&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showCounters&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;confetti&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;defaultMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;choice&quot;,&quot;keypad&quot;,&quot;visual&quot;],&quot;default&quot;:&quot;choice&quot;,&quot;tsType&quot;:&quot;'choice' | 'keypad' | 'visual'&quot;}}">
+const SETTINGS_KEY = 'mathstars_organic_settings_v1';
+const PROFILE_KEY = 'mathstars_organic_profile_v1';
+
+const OBJECT_ICONS = ['🍎', '🌟', '🐶', '⚽', '🍕', '🐱', '🚀', '🍓', '🎈', '🎨'];
+
+const KID = [
+  { bg: '#1a9cf0', dark: '#0b6fb3' },
+  { bg: '#0fb26b', dark: '#0a8451' },
+  { bg: '#f59300', dark: '#c06f00' },
+  { bg: '#8b3ff0', dark: '#6a26c4' },
+  { bg: '#e8455c', dark: '#bd2b41' },
+  { bg: '#0891b2', dark: '#0a6f88' }
+];
+const NUMFONT = 'var(--font-body)';
+
+const W_ONES = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+  'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+const W_TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+function numberWords(n) {
+  n = Math.round(n);
+  if (n < 20) return W_ONES[n];
+  if (n < 100) { const r = n % 10; return W_TENS[Math.floor(n / 10)] + (r ? '-' + W_ONES[r] : ''); }
+  if (n < 1000) { const r = n % 100; return W_ONES[Math.floor(n / 100)] + ' hundred' + (r ? ' ' + numberWords(r) : ''); }
+  const r = n % 1000;
+  return numberWords(Math.floor(n / 1000)) + ' thousand' + (r ? ' ' + numberWords(r) : '');
+}
+
+const STATIONS = [
+  { title: 'Numbers', glyph: '123', open: true, tab: 'numbers', tint: '#8b3ff0', shade: '#6a26c4' },
+  { title: 'Addition', glyph: '+', open: true, tab: 'game', tint: '#0fb26b', shade: '#0a8451' },
+  { title: 'Subtraction', glyph: '−', open: true, tab: 'sub', tint: '#e8455c', shade: '#bd2b41' },
+  { title: 'Multiplication', glyph: '×', tint: '#f59300' },
+  { title: 'Division', glyph: '÷', tint: '#0891b2' },
+  { title: 'AAD Math Reasoning', glyph: '?', tint: '#8b3ff0' },
+  { title: 'Functional Math Skills', glyph: '$', tint: '#0fb26b' },
+  {}, {}, {}, {}, {}, {}, {}, {}, {}
+];
+
+const BADGES = [
+  { id: 'first_step', title: 'First Step', description: 'Solve your very first addition problem correctly.', req: 'Solve 1 problem' },
+  { id: 'high_five', title: 'High Five', description: 'Reach a streak of 5 correct answers in a row.', req: '5-in-a-row streak' },
+  { id: 'streak_master', title: 'Super Streak', description: 'Reach 10 correct answers in a row.', req: '10-in-a-row streak' },
+  { id: 'star_collector', title: 'Star Collector', description: 'Collect 25 shiny stars by answering questions.', req: 'Earn 25 stars' },
+  { id: 'level_3', title: 'Math Explorer', description: 'Reach Level 3 in Mr. Riehl’s Math Lab.', req: 'Reach Level 3' },
+  { id: 'level_5', title: 'Math Superhero', description: 'Reach Level 5 in Mr. Riehl’s Math Lab.', req: 'Reach Level 5' },
+  { id: 'zero_hero', title: 'Zero Hero', description: 'Master adding zero, like 5 + 0 = 5.', req: 'Solve 5 problems with 0' },
+  { id: 'double_trouble', title: 'Double Champ', description: 'Solve 5 doubles, like 4 + 4 or 3 + 3.', req: 'Solve 5 doubles' },
+  { id: 'century_solver', title: 'Century Master', description: 'Solve 50 math problems altogether.', req: 'Solve 50 problems' },
+  { id: 'accuracy_ace', title: 'Accuracy Ace', description: 'Keep 90% accuracy or better across 20+ problems.', req: '90%+ over 20 solved' }
+];
+
+const AVATARS = [
+  { id: 'starry', name: 'Starry', emoji: '⭐', reqLevel: 1 },
+  { id: 'dino', name: 'Dino Kid', emoji: '🦖', reqLevel: 1 },
+  { id: 'cat', name: 'Whiskers', emoji: '🐱', reqLevel: 1 },
+  { id: 'robot', name: 'Beep Boop', emoji: '🤖', reqLevel: 2 },
+  { id: 'unicorn', name: 'Sparkle', emoji: '🦄', reqLevel: 3 },
+  { id: 'wizard', name: 'Merlin', emoji: '🧙', reqLevel: 4 },
+  { id: 'astronaut', name: 'Astro', emoji: '👩‍🚀', reqLevel: 5 },
+  { id: 'dragon', name: 'Flame', emoji: '🐉', reqLevel: 6 }
+];
+
+const DEFAULT_SETTINGS = {
+  minDigit: 0, maxDigit: 9, sumLimit: 18, questionMode: 'choice',
+  voiceFeedback: true, soundEffects: true, voiceRate: 0.95, autoSpeak: true, parentPin: '1234'
+};
+
+function freshFamilies() {
+  const f = {};
+  for (let i = 0; i <= 9; i++) f[i] = { attempted: 0, correct: 0, totalTimeMs: 0 };
+  return f;
+}
+
+function defaultProfile() {
+  return {
+    avatarId: 'starry', stars: 0, xp: 0, level: 1, currentStreak: 0, bestStreak: 0,
+    totalSolved: 0, totalCorrect: 0, numLevel: 1, factFamilies: freshFamilies(),
+    unlockedBadges: [], unlockedAvatars: ['starry', 'dino', 'cat'], history: []
+  };
+}
+
+function loadJSON(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return fallback;
+    const parsed = JSON.parse(raw);
+    return Object.assign({}, fallback, parsed);
+  } catch (e) { return fallback; }
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const settings = loadJSON(SETTINGS_KEY, DEFAULT_SETTINGS);
+    if (props && props.defaultMode && !localStorage.getItem(SETTINGS_KEY)) settings.questionMode = props.defaultMode;
+    const profile = loadJSON(PROFILE_KEY, defaultProfile());
+    profile.factFamilies = Object.assign(freshFamilies(), profile.factFamilies || {});
+    this.state = {
+      settings, profile, tab: 'game', portalOpen: false, pinOk: false, pinEntry: '', pinError: false,
+      problem: null, selected: null, keypad: '', feedback: null, counted: [], submitting: false,
+      badgeQueue: [], gateAnswer: '', portalTab: 'analytics', screen: 'splash', op: 'add',
+      numTarget: null, numOptions: [], numPicked: null, numFeedback: null, numRun: 0, numDone: 0, numRight: 0, voiceBlocked: false
+    };
+    this.confettiRef = React.createRef();
+    this.startTime = Date.now();
+    this.timers = [];
+  }
+
+  componentDidMount() {
+    this.gestured = false;
+    this.onGesture = () => {
+      if (this.gestured) return;
+      this.gestured = true;
+      try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {}
+    };
+    ['pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+      window.addEventListener(ev, this.onGesture, { capture: true }));
+    this.nextProblem();
+    this.newNumber();
+  }
+  componentWillUnmount() {
+    this.timers.forEach(clearTimeout);
+    if (this.onGesture) ['pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+      window.removeEventListener(ev, this.onGesture, { capture: true }));
+    try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (e) {}
+  }
+
+  persist(patch) {
+    this.setState(patch, () => {
+      try {
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(this.state.settings));
+        localStorage.setItem(PROFILE_KEY, JSON.stringify(this.state.profile));
+      } catch (e) {}
+    });
+  }
+
+  /* ---------- sound ---------- */
+  tone(freq, dur, type) {
+    if (!this.state.settings.soundEffects) return;
+    try {
+      this.ctx = this.ctx || new (window.AudioContext || window.webkitAudioContext)();
+      const o = this.ctx.createOscillator(), g = this.ctx.createGain();
+      o.type = type || 'sine';
+      o.frequency.value = freq;
+      g.gain.value = 0.09;
+      g.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + dur);
+      o.connect(g).connect(this.ctx.destination);
+      o.start();
+      o.stop(this.ctx.currentTime + dur);
+    } catch (e) {}
+  }
+  sound(kind) {
+    if (kind === 'correct') { this.tone(660, 0.14); this.timers.push(setTimeout(() => this.tone(880, 0.22), 130)); }
+    else if (kind === 'wrong') { this.tone(300, 0.22, 'triangle'); }
+    else if (kind === 'badge') { [523, 659, 784, 1046].forEach((f, i) => this.timers.push(setTimeout(() => this.tone(f, 0.18), i * 110))); }
+    else this.tone(520, 0.07, 'square');
+  }
+  speak(text, force) {
+    const s = this.state.settings;
+    if (!force && !s.voiceFeedback) return;
+    const synth = window.speechSynthesis;
+    if (!synth) { if (force) this.setState({ voiceBlocked: true }); return; }
+    this.spoke = true;
+    // Browsers reject speech before the first real user gesture, and a rejected
+    // utterance wedges the queue (speaking stays true, nothing ever plays).
+    if (!this.gestured) return;
+    this.voiceSeq = (this.voiceSeq || 0) + 1;
+    const seq = this.voiceSeq;
+    const attempt = (tries) => {
+      if (seq !== this.voiceSeq) return;
+      try {
+        synth.cancel();
+        if (synth.paused) synth.resume();
+        const u = new SpeechSynthesisUtterance(String(text));
+        u.lang = 'en-US';
+        u.rate = s.voiceRate || 1;
+        u.pitch = 1.15;
+        u.volume = 1;
+        const voices = synth.getVoices() || [];
+        const pick = voices.filter(v => /^en/i.test(v.lang || ''))[0] || voices[0];
+        if (pick) u.voice = pick;
+        let started = false;
+        u.onstart = () => { started = true; if (this.state.voiceBlocked) this.setState({ voiceBlocked: false }); };
+        u.onerror = (e) => {
+          const kind = (e && e.error) || '';
+          if (kind === 'interrupted' || kind === 'canceled' || kind === 'cancelled') return;
+          if (tries < 2) { this.timers.push(setTimeout(() => attempt(tries + 1), 120)); return; }
+          if (force) this.setState({ voiceBlocked: true });
+        };
+        this.timers.push(setTimeout(() => synth.speak(u), 40));
+        // Silent wedge: queued but never started. Reset the engine and retry once.
+        this.timers.push(setTimeout(() => {
+          if (started || seq !== this.voiceSeq) return;
+          if (tries < 2) { synth.cancel(); attempt(tries + 1); }
+          else if (force) this.setState({ voiceBlocked: true });
+        }, 900));
+      } catch (e) {
+        if (force && tries >= 2) this.setState({ voiceBlocked: true });
+      }
+    };
+    if ((synth.getVoices() || []).length === 0) {
+      synth.onvoiceschanged = () => attempt(0);
+      this.timers.push(setTimeout(() => attempt(0), 300));
+    } else {
+      attempt(0);
+    }
+  }
+  speakNumber(n, force) { this.speak(numberWords(n), force); }
+  burst() {
+    if (this.props.confetti === false) return;
+    const host = this.confettiRef.current;
+    if (!host) return;
+    const colors = ['#1a9cf0', '#0fb26b', '#f59300', '#8b3ff0', '#fbbf24', '#e8455c'];
+    for (let i = 0; i < 26; i++) {
+      const p = document.createElement('div');
+      const size = 8 + Math.random() * 8;
+      p.style.cssText = 'position:absolute;top:32%;left:' + (35 + Math.random() * 30) + '%;width:' + size + 'px;height:' + size + 'px;border-radius:' + (Math.random() > 0.5 ? '999px' : '3px') + ';background:' + colors[i % colors.length] + ';animation:ms-fall ' + (0.9 + Math.random() * 0.7) + 's ease-in forwards;';
+      p.style.setProperty('--dx', (Math.random() * 340 - 170) + 'px');
+      p.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+      host.appendChild(p);
+      setTimeout(() => p.remove(), 1800);
+    }
+  }
+
+  /* ---------- game ---------- */
+  nextProblem(prev1, prev2) {
+    const s = this.state.settings, p = this.state.profile;
+    const lo = Math.min(s.minDigit, s.maxDigit), hi = Math.max(s.minDigit, s.maxDigit);
+    const pairs = [];
+    if (this.state.op === 'sub') {
+      for (let a = 0; a <= 9; a++) for (let b = 0; b <= a; b++) pairs.push([a, b]);
+    } else {
+      for (let a = lo; a <= hi; a++) for (let b = lo; b <= hi; b++) if (a + b <= s.sumLimit) pairs.push([a, b]);
+    }
+    if (!pairs.length) pairs.push([1, 1]);
+    const weighted = pairs.map(pair => {
+      const sa = p.factFamilies[pair[0]] || { attempted: 0, correct: 0 };
+      const sb = p.factFamilies[pair[1]] || { attempted: 0, correct: 0 };
+      const accA = sa.attempted > 0 ? sa.correct / sa.attempted : 0.5;
+      const accB = sb.attempted > 0 ? sb.correct / sb.attempted : 0.5;
+      let w = Math.max(1, Math.round((1.1 - (accA + accB) / 2) * 10));
+      if (pair[0] === prev1 && pair[1] === prev2) w = 1;
+      return { pair, w };
+    });
+    let total = weighted.reduce((a, c) => a + c.w, 0), r = Math.random() * total, chosen = weighted[0].pair;
+    for (const item of weighted) { if (r <= item.w) { chosen = item.pair; break; } r -= item.w; }
+    const sub = this.state.op === 'sub';
+    let num1 = chosen[0], num2 = chosen[1];
+    if (sub) {
+      if (num2 > num1) { const t = num1; num1 = num2; num2 = t; }
+      num1 = Math.min(9, num1); num2 = Math.min(num2, num1);
+    }
+    const answer = sub ? num1 - num2 : num1 + num2;
+    const cap = sub ? 9 : 18;
+    const set = new Set([answer]);
+    [answer + 1, answer - 1, answer + 2, answer - 2, answer + 3, num1, num2, Math.abs(num1 - num2)]
+      .filter(v => v >= 0 && v <= cap).sort(() => Math.random() - 0.5)
+      .forEach(v => { if (set.size < 4) set.add(v); });
+    let c = 0;
+    while (set.size < 4) { if (!set.has(c)) set.add(c); c++; }
+    const problem = {
+      num1, num2, answer, op: this.state.op,
+      options: Array.from(set).sort(() => Math.random() - 0.5),
+      icon: OBJECT_ICONS[Math.floor(Math.random() * OBJECT_ICONS.length)]
+    };
+    this.startTime = Date.now();
+    this.setState({ problem, selected: null, keypad: '', feedback: null, counted: [], submitting: false });
+    if (s.autoSpeak && s.voiceFeedback) this.speak('What is ' + num1 + (sub ? ' minus ' : ' plus ') + num2 + '?');
+  }
+
+  tapDot(id) {
+    this.sound('pop');
+    const counted = this.state.counted.includes(id)
+      ? this.state.counted.filter(i => i !== id)
+      : this.state.counted.concat([id]);
+    this.setState({ counted });
+    if (!this.state.counted.includes(id)) this.speak(String(counted.length));
+  }
+
+  submit(chosen) {
+    const { problem, profile, settings } = this.state;
+    if (!problem || this.state.submitting) return;
+    const timeMs = Date.now() - this.startTime;
+    const correct = chosen === problem.answer;
+
+    const families = Object.assign({}, profile.factFamilies);
+    [problem.num1, problem.num2].forEach(n => {
+      const prev = families[n] || { attempted: 0, correct: 0, totalTimeMs: 0 };
+      families[n] = { attempted: prev.attempted + 1, correct: prev.correct + (correct ? 1 : 0), totalTimeMs: prev.totalTimeMs + timeMs };
+    });
+
+    const streak = correct ? profile.currentStreak + 1 : 0;
+    const starsEarned = correct ? 1 + (streak >= 5 ? 1 : 0) : 0;
+    const xp = profile.xp + (correct ? 10 + Math.min(streak, 5) * 2 : 0);
+    const next = Object.assign({}, profile, {
+      stars: profile.stars + starsEarned,
+      xp,
+      level: Math.floor(xp / 50) + 1,
+      currentStreak: streak,
+      bestStreak: Math.max(profile.bestStreak, streak),
+      totalSolved: profile.totalSolved + 1,
+      totalCorrect: profile.totalCorrect + (correct ? 1 : 0),
+      factFamilies: families,
+      history: [{
+        id: 'q' + Date.now() + Math.random().toString(36).slice(2, 6), timestamp: Date.now(),
+        num1: problem.num1, num2: problem.num2, op: problem.op, userAnswer: chosen, correctAnswer: problem.answer,
+        isCorrect: correct, timeMs
+      }].concat(profile.history).slice(0, 100)
+    });
+
+    const unlockedAvatars = next.unlockedAvatars.slice();
+    AVATARS.forEach(a => { if (next.level >= a.reqLevel && unlockedAvatars.indexOf(a.id) === -1) unlockedAvatars.push(a.id); });
+    next.unlockedAvatars = unlockedAvatars;
+
+    const newBadges = this.checkBadges(next);
+    next.unlockedBadges = profile.unlockedBadges.concat(newBadges);
+
+    if (correct) {
+      this.sound('correct');
+      this.burst();
+      const phrases = [
+        'Super job! ' + problem.num1 + (problem.op === 'sub' ? ' minus ' : ' plus ') + problem.num2 + ' equals ' + problem.answer + '!',
+        'Awesome, you got it right!',
+        'Brilliant! ' + chosen + ' is correct!'
+      ];
+      this.speak(phrases[Math.floor(Math.random() * phrases.length)]);
+    } else {
+      this.sound('wrong');
+      this.speak('Nice try! ' + problem.num1 + (problem.op === 'sub' ? ' minus ' : ' plus ') + problem.num2 + ' is ' + problem.answer + '.');
+    }
+
+    this.persist({
+      profile: next,
+      selected: chosen,
+      submitting: true,
+      badgeQueue: this.state.badgeQueue.concat(newBadges),
+      feedback: {
+        correct,
+        title: correct ? 'Correct!' : 'Nice try!',
+        message: correct
+          ? '+' + starsEarned + (starsEarned > 1 ? ' stars' : ' star') + ' — keep it rolling!'
+          : 'The answer is ' + problem.answer + '. You will get the next one.'
+      }
+    });
+
+    this.timers.push(setTimeout(() => this.nextProblem(problem.num1, problem.num2), correct ? 2000 : 2600));
+  }
+
+  checkBadges(p) {
+    const out = [];
+    const add = (id, cond) => { if (cond && p.unlockedBadges.indexOf(id) === -1) out.push(id); };
+    add('first_step', p.totalCorrect >= 1);
+    add('high_five', p.bestStreak >= 5);
+    add('streak_master', p.bestStreak >= 10);
+    add('star_collector', p.stars >= 25);
+    add('level_3', p.level >= 3);
+    add('level_5', p.level >= 5);
+    add('century_solver', p.totalSolved >= 50);
+    if (p.totalSolved >= 20) add('accuracy_ace', p.totalCorrect / p.totalSolved >= 0.9);
+    add('zero_hero', (p.factFamilies[0] || {}).correct >= 5);
+    add('double_trouble', p.history.filter(h => h.isCorrect && h.num1 === h.num2).length >= 5);
+    return out;
+  }
+
+  setSetting(patch) {
+    const settings = Object.assign({}, this.state.settings, patch);
+    this.persist({ settings });
+    this.timers.push(setTimeout(() => this.nextProblem(), 0));
+  }
+
+  /* ---------- numbers station ---------- */
+  numMax(lvl) { return [0, 9, 20, 100, 1000, 10000][lvl || 1]; }
+
+  newNumber() {
+    const lvl = this.state.profile.numLevel || 1;
+    const max = this.numMax(lvl);
+    const target = Math.floor(Math.random() * (max + 1));
+    const s = String(target);
+    const cands = [];
+    const push = v => { if (v >= 0 && v <= max && v !== target && cands.indexOf(v) === -1) cands.push(v); };
+    for (let i = 0; i < s.length - 1; i++) {
+      const a = s.split(''), t = a[i]; a[i] = a[i + 1]; a[i + 1] = t;
+      push(parseInt(a.join(''), 10));
+    }
+    for (let k = 0; k < 14; k++) {
+      const a = s.split('');
+      a[Math.floor(Math.random() * a.length)] = String(Math.floor(Math.random() * 10));
+      push(parseInt(a.join(''), 10));
+    }
+    [1, -1, 10, -10, 100, -100].forEach(d => push(target + d));
+    const pool = cands.sort(() => Math.random() - 0.5).slice(0, 2);
+    while (pool.length < 2) {
+      const r = Math.floor(Math.random() * (max + 1));
+      if (r !== target && pool.indexOf(r) === -1) pool.push(r);
+    }
+    const options = pool.concat([target]).sort(() => Math.random() - 0.5);
+    this.setState({ numTarget: target, numOptions: options, numPicked: null, numFeedback: null }, () => {
+      this.timers.push(setTimeout(() => this.speakNumber(target, true), 500));
+    });
+  }
+
+  setNumLevel(lvl) {
+    this.sound('pop');
+    this.persist({ profile: Object.assign({}, this.state.profile, { numLevel: lvl }) });
+    this.setState({ numRun: 0 }, () => this.newNumber());
+  }
+
+  submitNumber(v) {
+    if (this.state.numPicked !== null) return;
+    const target = this.state.numTarget;
+    const correct = v === target;
+    const p = this.state.profile;
+    const next = Object.assign({}, p);
+    const run = correct ? (this.state.numRun || 0) + 1 : 0;
+    let levelUp = false;
+    if (correct) {
+      next.stars = p.stars + 1;
+      next.xp = p.xp + 5;
+      next.level = Math.floor(next.xp / 50) + 1;
+      if (run >= 5 && (p.numLevel || 1) < 5) { next.numLevel = (p.numLevel || 1) + 1; levelUp = true; }
+    }
+    this.sound(correct ? 'correct' : 'wrong');
+    this.speak(correct ? ('Yes! ' + numberWords(target)) : ('That one is ' + numberWords(v) + '. Listen again for ' + numberWords(target)), false);
+    if (correct) this.burst();
+    this.persist({ profile: next });
+    this.setState({
+      numPicked: v,
+      numFeedback: { correct, levelUp, target },
+      numRun: levelUp ? 0 : run,
+      numDone: (this.state.numDone || 0) + 1,
+      numRight: (this.state.numRight || 0) + (correct ? 1 : 0)
+    });
+    this.timers.push(setTimeout(() => this.newNumber(), correct ? 1500 : 2400));
+  }
+
+  /* ---------- style helpers ---------- */
+  tabStyle(active) {
+    return {
+      border: 'none', borderRadius: 999, padding: '12px 22px', fontWeight: 900, fontSize: 17,
+      whiteSpace: 'nowrap', flexShrink: 0,
+      background: active ? '#1a9cf0' : 'var(--color-surface)',
+      color: active ? '#fff' : 'var(--color-neutral-800)',
+      boxShadow: active ? '0 4px 0 #0b6fb3' : 'none',
+      display: 'inline-flex', alignItems: 'center', gap: 6
+    };
+  }
+  dot(id, tint) {
+    const on = this.state.counted.includes(id);
+    return {
+      onClick: () => this.tapDot(id),
+      icon: this.state.problem ? this.state.problem.icon : '',
+      style: {
+        width: 48, height: 48, fontSize: 26, lineHeight: 1, border: 'none', borderRadius: 999,
+        background: on ? '#fbbf24' : '#fff',
+        transform: on ? 'scale(1.12)' : 'none',
+        boxShadow: on ? '0 4px 0 #d9971a' : 'var(--shadow-sm)',
+        transition: 'transform 0.12s ease, background 0.12s ease',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        outline: '3px solid ' + (on ? '#f59300' : tint)
+      }
+    };
+  }
+
+  renderVals() {
+    const { settings: s, profile: p, problem, feedback } = this.state;
+    const accuracy = p.totalSolved > 0 ? Math.round((p.totalCorrect / p.totalSolved) * 100) : 0;
+    const levelXp = p.xp - (p.level - 1) * 50;
+    const avatar = AVATARS.find(a => a.id === p.avatarId) || AVATARS[0];
+    const soundOn = !!(s.soundEffects || s.voiceFeedback);
+    const newBadge = BADGES.find(b => b.id === this.state.badgeQueue[0]);
+
+    const answerDisplay = this.state.selected !== null ? this.state.selected
+      : (s.questionMode === 'keypad' ? (this.state.keypad || '?') : '?');
+
+
+
+    const keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(n => ({
+      label: String(n),
+      onClick: () => { this.sound('pop'); if (this.state.keypad.length < 2) this.setState({ keypad: this.state.keypad + n }); },
+      style: { height: 66, fontFamily: NUMFONT, fontSize: 30, fontWeight: 900, border: 'none', borderRadius: 'var(--radius-md)', background: '#dbeefc', color: '#0b5f9e', boxShadow: '0 5px 0 #a8d6f5' }
+    })).concat([
+      { label: 'Clear', onClick: () => { this.sound('pop'); this.setState({ keypad: '' }); },
+        style: { height: 66, gridColumn: 'span 2', fontSize: 18, fontWeight: 900, border: 'none', borderRadius: 'var(--radius-md)', background: '#fde4ee', color: '#b0064c', boxShadow: '0 5px 0 #f7a8c8' } }
+    ]);
+
+    const families = [];
+    for (let d = 0; d <= 9; d++) {
+      const st = p.factFamilies[d] || { attempted: 0, correct: 0 };
+      const acc = st.attempted > 0 ? Math.round((st.correct / st.attempted) * 100) : 0;
+      const mastered = st.attempted >= 5 && acc >= 85;
+      const learning = !mastered && st.attempted > 0;
+      families.push({
+        digit: d,
+        status: mastered ? 'Mastered' : learning ? 'Learning' : 'New',
+        statusStyle: {
+          fontSize: 11, fontWeight: 800, padding: '3px 10px', borderRadius: 999,
+          background: mastered ? 'var(--color-accent-2-200)' : learning ? 'var(--color-accent-200)' : 'var(--color-neutral-300)',
+          color: mastered ? 'var(--color-accent-2-800)' : learning ? 'var(--color-accent-800)' : 'var(--color-neutral-700)'
+        },
+        accLabel: st.attempted > 0 ? acc + '%' : 'Not played',
+        barStyle: { height: '100%', width: (st.attempted > 0 ? acc : 0) + '%', borderRadius: 999, background: acc >= 85 ? 'var(--color-accent-2-600)' : 'var(--color-accent)', transition: 'width 0.4s ease' },
+        solvedLabel: 'Right ' + st.correct + ' of ' + st.attempted
+      });
+    }
+
+    const history = p.history.slice(0, 15).map(h => ({
+      id: h.id,
+      equation: h.num1 + (h.op === 'sub' ? ' \u2212 ' : ' + ') + h.num2 + ' = ' + h.correctAnswer,
+      wrong: !h.isCorrect,
+      userAnswer: h.userAnswer,
+      seconds: (h.timeMs / 1000).toFixed(1),
+      time: new Date(h.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      dotStyle: { width: 14, height: 14, borderRadius: 999, flexShrink: 0, background: h.isCorrect ? 'var(--color-accent-2-600)' : 'var(--color-accent)' }
+    }));
+
+    const toggleDef = [
+      { key: 'voiceFeedback', label: 'Spoken feedback (speech synthesis)' },
+      { key: 'autoSpeak', label: 'Auto-read questions out loud' },
+      { key: 'soundEffects', label: 'Sound effects and fanfare' }
+    ];
+
+    const weakFacts = Object.keys(p.factFamilies).map(k => {
+      const st = p.factFamilies[k];
+      return { digit: parseInt(k, 10), attempted: st.attempted, acc: st.attempted > 0 ? (st.correct / st.attempted) * 100 : 100 };
+    }).filter(f => f.attempted >= 2 && f.acc < 75).sort((a, b) => a.acc - b.acc);
+
+    return {
+      appTitle: this.props.appTitle || 'Mr. Riehl’s Math Lab',
+      isSplash: this.state.screen === 'splash',
+      backToSplash: () => { this.sound('pop'); this.setState({ screen: 'splash' }); },
+      stations: STATIONS.map(st => {
+        const open = st.open === true;
+        const empty = !st.title;
+        return {
+          title: st.title || '',
+          glyph: st.title ? (st.glyph || '+') : '',
+          soon: !!st.title && !open,
+          open,
+          disabled: !open,
+          onClick: open ? (() => {
+            this.sound('pop');
+            if (st.tab === 'numbers') { this.setState({ screen: 'app', tab: 'numbers' }); this.newNumber(); }
+            else { const op = st.tab === 'sub' ? 'sub' : 'add'; this.setState({ screen: 'app', tab: 'game', op }, () => this.nextProblem()); }
+          }) : (() => {}),
+          style: {
+            aspectRatio: '1', display: 'flex', flexDirection: 'column', alignItems: 'center',
+            justifyContent: 'center', gap: 6, padding: 13.2,
+            borderRadius: 'var(--radius-lg)', textAlign: 'center',
+            border: empty ? '2px dashed var(--color-neutral-300)' : 'none',
+            background: empty ? 'transparent' : (open ? (st.tint || KID[1].bg) : 'var(--color-surface)'),
+            boxShadow: open ? ('0 8px 0 ' + (st.shade || KID[1].dark)) : (empty ? 'none' : '0 5px 0 var(--color-neutral-200)'),
+            opacity: empty ? 0.55 : 1,
+            cursor: open ? 'pointer' : 'default'
+          },
+          glyphStyle: {
+            fontFamily: NUMFONT, fontWeight: 900, fontSize: 36, lineHeight: 1,
+            color: empty ? 'var(--color-neutral-400)' : (open ? '#fff' : (st.tint || '#0b5f9e'))
+          },
+          titleStyle: {
+            fontWeight: 800, fontSize: 14, lineHeight: 1.2, textWrap: 'pretty',
+            color: open ? '#fff' : 'var(--color-neutral-900)'
+          }
+        };
+      }),
+      showCounters: this.props.showCounters !== false,
+      level: p.level, stars: p.stars, streak: p.currentStreak, bestStreak: p.bestStreak,
+      badgeCountLabel: p.unlockedBadges.length > 0 ? '(' + p.unlockedBadges.length + ')' : '',
+      badgeProgress: p.unlockedBadges.length + ' of ' + BADGES.length + ' earned',
+      streakStyle: {
+        display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 13.2px', borderRadius: 999,
+        fontWeight: 900, fontSize: 15,
+        background: p.currentStreak > 0 ? '#f97316' : 'var(--color-neutral-300)',
+        color: p.currentStreak > 0 ? '#fff' : 'var(--color-neutral-700)'
+      },
+
+      tabGame: this.state.tab === 'game', tabDash: this.state.tab === 'dashboard', tabBadges: this.state.tab === 'badges',
+      tabNumbers: this.state.tab === 'numbers',
+      tabNumStyle: this.tabStyle(this.state.tab === 'numbers'),
+      tabGameStyle: this.tabStyle(this.state.op !== 'sub' && this.state.tab === 'game'),
+      tabDashStyle: this.tabStyle(this.state.tab === 'dashboard'),
+      tabBadgeStyle: this.tabStyle(this.state.tab === 'badges'),
+      goGame: () => { this.sound('pop'); this.setState({ screen: 'app', tab: 'game', op: 'add' }, () => this.nextProblem()); },
+      goNumbers: () => { this.sound('pop'); this.setState({ screen: 'app', tab: 'numbers' }); this.newNumber(); },
+      goDash: () => { this.sound('pop'); this.setState({ screen: 'app', tab: 'dashboard' }); },
+      goBadges: () => { this.sound('pop'); this.setState({ screen: 'app', tab: 'badges' }); },
+
+      soundOn, soundOff: !soundOn,
+      soundBtnStyle: {
+        width: 44, height: 44, border: 'none', borderRadius: 999,
+        background: soundOn ? '#fde68a' : 'var(--color-neutral-300)',
+        color: soundOn ? '#92400e' : 'var(--color-neutral-600)',
+        boxShadow: soundOn ? '0 4px 0 #f0c04a' : 'none',
+        display: 'flex', alignItems: 'center', justifyContent: 'center'
+      },
+      toggleSound: () => {
+        const on = !soundOn;
+        this.persist({ settings: Object.assign({}, s, { soundEffects: on, voiceFeedback: on }) });
+      },
+
+      avatarEmoji: avatar.emoji,
+      mascotLine: feedback ? (feedback.correct ? 'Woohoo, perfect!' : 'Keep going, superstar!') : "Let's solve it together",
+      num1: problem ? problem.num1 : '', num2: problem ? problem.num2 : '',
+      opSymbol: this.state.op === 'sub' ? '\u2212' : '+',
+      opAdd: this.state.op !== 'sub',
+      opSub: this.state.op === 'sub',
+      opWord: this.state.op === 'sub' ? 'Take away' : 'Add',
+      trayHint: this.state.op === 'sub' ? 'Tap the ones you take away' : 'Tap the pictures to count out loud',
+      trayGridStyle: this.state.op === 'sub'
+        ? { display: 'flex', justifyContent: 'center' }
+        : { display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', justifyItems: 'center', gap: 13.2 },
+      answerDisplay,
+      answerTileStyle: {
+        fontFamily: NUMFONT, fontWeight: 900, fontSize: 88, lineHeight: 1,
+        padding: '17.6px 26.4px', borderRadius: 'var(--radius-lg)', minWidth: 138, textAlign: 'center',
+        background: this.state.selected === null ? '#d6f5e4' : (feedback && feedback.correct ? '#0fb26b' : '#e8455c'),
+        color: this.state.selected === null ? '#05603a' : '#fff',
+        border: '4px solid ' + (this.state.selected === null ? '#6dd6a5' : 'transparent'),
+        transition: 'background 0.15s ease'
+      },
+      speakQuestion: () => { if (problem) this.speak('What is ' + problem.num1 + (problem.op === 'sub' ? ' minus ' : ' plus ') + problem.num2 + '?', true); },
+      countedCount: this.state.counted.length,
+      dots1: problem ? Array.from({ length: problem.num1 }).map((_, i) =>
+        this.dot(i, problem.op === 'sub' && i >= problem.num1 - problem.num2 ? '#f7a8c8' : '#a8d6f5')) : [],
+      dots2: problem && problem.op !== 'sub'
+        ? Array.from({ length: problem.num2 }).map((_, i) => this.dot(problem.num1 + i, '#f7a8c8')) : [],
+
+      numLevel: p.numLevel || 1,
+      numRangeLabel: '0 to ' + this.numMax(p.numLevel || 1).toLocaleString('en-US'),
+      numScoreLabel: (this.state.numRight || 0) + ' of ' + (this.state.numDone || 0) + ' right',
+      numRunLabel: (this.state.numRun || 0) + ' in a row',
+      repeatNumber: () => { if (this.state.numTarget !== null) this.speakNumber(this.state.numTarget, true); },
+      voiceBlocked: !!this.state.voiceBlocked,
+      retryVoice: () => { this.setState({ voiceBlocked: false }, () => { if (this.state.numTarget !== null) this.speakNumber(this.state.numTarget, true); }); },
+      numLevels: [1, 2, 3, 4, 5].map(lvl => ({
+        label: 'Level ' + lvl,
+        sub: '0\u2013' + this.numMax(lvl).toLocaleString('en-US'),
+        onClick: () => this.setNumLevel(lvl),
+        style: {
+          border: 'none', borderRadius: 'var(--radius-md)', padding: '10px 16px', cursor: 'pointer',
+          display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 2, minWidth: 96,
+          fontWeight: 900, fontSize: 15, textAlign: 'left',
+          background: (p.numLevel || 1) === lvl ? '#8b3ff0' : 'var(--color-surface)',
+          color: (p.numLevel || 1) === lvl ? '#fff' : 'var(--color-neutral-700)',
+          boxShadow: (p.numLevel || 1) === lvl ? '0 5px 0 #6a26c4' : '0 3px 0 var(--color-neutral-200)'
+        },
+        subStyle: { fontSize: 12, fontWeight: 700, opacity: 0.85 }
+      })),
+      numOptions: (this.state.numOptions || []).map((o, i) => {
+        const revealed = this.state.numPicked !== null;
+        const isT = o === this.state.numTarget;
+        const c = [KID[0], KID[3], KID[2]][i % 3];
+        let bg = c.bg, dark = c.dark, ink = '#fff';
+        if (revealed) {
+          if (isT) { bg = '#0fb26b'; dark = '#0a8451'; }
+          else { bg = 'var(--color-neutral-200)'; dark = 'var(--color-neutral-300)'; ink = 'var(--color-neutral-500)'; }
+        }
+        return {
+          label: o.toLocaleString('en-US'),
+          onClick: () => this.submitNumber(o),
+          style: {
+            flex: '1 1 180px', minHeight: 140, border: 'none', borderRadius: 'var(--radius-lg)',
+            fontFamily: NUMFONT, fontWeight: 900,
+            fontSize: this.numMax(p.numLevel || 1) >= 1000 ? 46 : 62,
+            background: bg, color: ink, boxShadow: '0 8px 0 ' + dark,
+            transition: 'transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease',
+            transform: revealed && isT ? 'translateY(4px)' : 'none'
+          }
+        };
+      }),
+      numFeedbackShown: !!this.state.numFeedback,
+      numFeedbackEmoji: this.state.numFeedback ? (this.state.numFeedback.correct ? '\ud83c\udf89' : '\ud83d\udc42') : '',
+      numFeedbackTitle: this.state.numFeedback
+        ? (this.state.numFeedback.levelUp ? 'Level up!' : (this.state.numFeedback.correct ? 'You heard it!' : 'Listen once more'))
+        : '',
+      numFeedbackMessage: this.state.numFeedback
+        ? (this.state.numFeedback.levelUp
+            ? 'Five in a row \u2014 bigger numbers now.'
+            : 'The number was ' + this.state.numFeedback.target.toLocaleString('en-US') + '.')
+        : '',
+      numFeedbackStyle: {
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 17.6,
+        flexWrap: 'wrap', padding: '17.6px 26.4px', borderRadius: 'var(--radius-lg)',
+        background: this.state.numFeedback && this.state.numFeedback.correct ? '#d6f5e4' : '#fff1f3',
+        border: '3px solid ' + (this.state.numFeedback && this.state.numFeedback.correct ? '#6dd6a5' : '#f5aab5'),
+        color: this.state.numFeedback && this.state.numFeedback.correct ? '#05603a' : '#8a1023'
+      },
+
+      modeChoice: s.questionMode === 'choice', modeKeypad: s.questionMode === 'keypad', modeVisual: s.questionMode === 'visual',
+      options: problem ? problem.options.map((o, i) => ({
+        value: o,
+        onClick: () => this.submit(o),
+        style: {
+          height: 128, fontFamily: NUMFONT, fontWeight: 900, fontSize: 64,
+          border: 'none', borderRadius: 'var(--radius-lg)',
+          background: KID[i % 4].bg, color: '#fff',
+          boxShadow: this.state.selected === o ? ('0 2px 0 ' + KID[i % 4].dark) : ('0 8px 0 ' + KID[i % 4].dark),
+          outline: this.state.selected === o ? '4px solid #fbbf24' : 'none',
+          outlineOffset: 2,
+          transform: this.state.selected === o ? 'translateY(6px)' : 'none',
+          transition: 'transform 0.12s ease, box-shadow 0.12s ease'
+        }
+      })) : [],
+      keys,
+      submitKeypad: () => { if (this.state.keypad !== '') this.submit(parseInt(this.state.keypad, 10)); },
+      visualVals: Array.from({ length: this.state.op === 'sub' ? 10 : 19 }).map((_, v) => ({
+        label: v,
+        onClick: () => this.submit(v),
+        style: { width: 64, height: 64, fontFamily: NUMFONT, fontSize: 26, fontWeight: 900, border: 'none', borderRadius: 999, background: KID[v % 6].bg, color: '#fff', boxShadow: '0 5px 0 ' + KID[v % 6].dark }
+      })),
+
+      feedbackShown: !!feedback,
+      feedbackEmoji: feedback ? (feedback.correct ? '🎉' : '💡') : '',
+      feedbackTitle: feedback ? feedback.title : '',
+      feedbackMessage: feedback ? feedback.message : '',
+      feedbackStyle: {
+        borderRadius: 'var(--radius-lg)', padding: '26.4px', display: 'flex', flexWrap: 'wrap',
+        alignItems: 'center', justifyContent: 'space-between', gap: '17.6px',
+        boxShadow: 'var(--shadow-md)', animation: 'ms-in 0.25s ease-out',
+        background: feedback && feedback.correct ? 'var(--color-accent-2-700)' : 'var(--color-accent-700)',
+        color: '#fff'
+      },
+      nextProblem: () => { if (problem) this.nextProblem(problem.num1, problem.num2); },
+      goSub: () => { this.sound('pop'); this.setState({ screen: 'app', tab: 'game', op: 'sub' }, () => this.nextProblem()); },
+      tabSubStyle: this.tabStyle(this.state.tab === 'game' && this.state.op === 'sub'),
+      gameTitle: this.state.op === 'sub' ? 'Subtraction' : 'Addition',
+      pickLabel: this.state.op === 'sub' ? 'Pick what is left' : 'Pick the total',
+
+      accuracy, accuracyDetail: p.totalCorrect + ' right out of ' + p.totalSolved,
+      accuracyNote: accuracy >= 80 ? 'Mastery pace' : accuracy >= 50 ? 'Good progress' : 'Building skills',
+      xpLabel: levelXp + ' / 50 XP to level ' + (p.level + 1),
+      xpBarStyle: { height: '100%', width: Math.min(100, Math.max(0, (levelXp / 50) * 100)) + '%', borderRadius: 999, background: 'var(--color-accent-300)', transition: 'width 0.5s ease' },
+      families, history, historyEmpty: p.history.length === 0,
+
+      avatars: AVATARS.map(a => {
+        const unlocked = p.unlockedAvatars.indexOf(a.id) !== -1 || p.level >= a.reqLevel;
+        const selected = p.avatarId === a.id;
+        return {
+          name: a.name, emoji: a.emoji,
+          status: selected ? 'Chosen' : unlocked ? 'Unlocked' : 'Level ' + a.reqLevel,
+          statusStyle: {
+            fontSize: 12, fontWeight: 800, padding: '3px 12px', borderRadius: 999,
+            background: selected ? 'var(--color-accent)' : unlocked ? 'var(--color-accent-2-200)' : 'var(--color-neutral-300)',
+            color: selected ? '#fff' : unlocked ? 'var(--color-accent-2-800)' : 'var(--color-neutral-600)'
+          },
+          onClick: () => { if (unlocked) { this.sound('pop'); this.persist({ profile: Object.assign({}, p, { avatarId: a.id }) }); } },
+          style: {
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8.8,
+            padding: '17.6px', borderRadius: 'var(--radius-lg)', border: 'none',
+            background: selected ? 'var(--color-accent-200)' : 'var(--color-neutral-100)',
+            boxShadow: selected ? 'var(--shadow-md)' : 'none',
+            opacity: unlocked ? 1 : 0.5, cursor: unlocked ? 'pointer' : 'not-allowed'
+          }
+        };
+      }),
+
+      badges: BADGES.map(b => {
+        const unlocked = p.unlockedBadges.indexOf(b.id) !== -1;
+        return {
+          title: b.title, description: b.description, reqLabel: 'How: ' + b.req,
+          unlocked, locked: !unlocked,
+          cardStyle: {
+            display: 'flex', gap: '17.6px', padding: '26.4px', borderRadius: 'var(--radius-lg)',
+            background: unlocked ? 'var(--color-accent-2-100)' : 'var(--color-neutral-100)',
+            boxShadow: unlocked ? 'var(--shadow-sm)' : 'none',
+            opacity: unlocked ? 1 : 0.65
+          },
+          iconStyle: {
+            width: 56, height: 56, flexShrink: 0, borderRadius: 999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            background: unlocked ? 'var(--color-accent)' : 'var(--color-neutral-300)',
+            color: unlocked ? '#fff' : 'var(--color-neutral-600)'
+          }
+        };
+      }),
+
+      portalOpen: this.state.portalOpen,
+      openPortal: () => { this.sound('pop'); this.setState({ portalOpen: true, pinEntry: '', gateAnswer: '', pinError: false }); },
+      closePortal: () => this.setState({ portalOpen: false, pinOk: false }),
+      pinLocked: this.state.portalOpen && !this.state.pinOk,
+      pinUnlocked: this.state.portalOpen && this.state.pinOk,
+      pinEntry: this.state.pinEntry, pinError: this.state.pinError,
+      gateQuestion: 'What is 8 + 7?',
+      gateAnswer: this.state.gateAnswer,
+      onGateAnswer: (e) => this.setState({ gateAnswer: e.target.value, pinError: false }),
+      onPinChange: (e) => this.setState({ pinEntry: e.target.value, pinError: false }),
+      submitPin: () => {
+        if (parseInt(this.state.gateAnswer, 10) === 15 || this.state.pinEntry === s.parentPin) {
+          this.sound('correct');
+          this.setState({ pinOk: true, pinError: false });
+        } else {
+          this.sound('wrong');
+          this.setState({ pinError: true });
+        }
+      },
+      portalTabs: [
+        { key: 'analytics', label: 'Learning analytics' },
+        { key: 'settings', label: 'Difficulty & gameplay' },
+        { key: 'privacy', label: 'Child safety & privacy' }
+      ].map(t => ({
+        label: t.label,
+        onClick: () => this.setState({ portalTab: t.key }),
+        style: {
+          border: 'none', borderRadius: 999, padding: '10px 18px', fontWeight: 800, fontSize: 14,
+          whiteSpace: 'nowrap',
+          background: this.state.portalTab === t.key ? 'var(--color-accent)' : 'var(--color-surface)',
+          color: this.state.portalTab === t.key ? '#fff' : 'var(--color-neutral-800)'
+        }
+      })),
+      pAnalytics: this.state.portalTab === 'analytics',
+      pSettings: this.state.portalTab === 'settings',
+      pPrivacy: this.state.portalTab === 'privacy',
+      totalSolved: p.totalSolved,
+      factRows: families.map((f, d) => {
+        const st = p.factFamilies[d] || { attempted: 0, correct: 0 };
+        const acc = st.attempted > 0 ? Math.round((st.correct / st.attempted) * 100) : 0;
+        return {
+          digit: d,
+          accLabel: st.attempted > 0 ? acc + '% accuracy' : 'No attempts',
+          accStyle: { fontSize: 12, fontWeight: 800, margin: '2px 0', color: acc >= 85 ? 'var(--color-accent-2-700)' : st.attempted > 0 ? 'var(--color-accent-700)' : 'var(--color-neutral-500)' },
+          countLabel: '(' + st.correct + '/' + st.attempted + ')'
+        };
+      }),
+      hasWeakFacts: weakFacts.length > 0,
+      weakFactsText: 'Extra practice would help with ' + weakFacts.map(f => '+' + f.digit + ' facts (' + Math.round(f.acc) + '%)').join(', ') + '.',
+      privacyCards: [
+        { title: 'Local data storage only', body: 'All practice progress, stars and levels stay on this browser. No personally identifiable information is collected or transmitted.' },
+        { title: 'No ads or purchases', body: 'There are no advertisements, third-party tracking scripts or paid add-ons anywhere in the app.' },
+        { title: 'Works fully offline', body: 'Everything runs client-side, so practice continues without an internet connection.' },
+        { title: 'Protected grown-up settings', body: 'Configuration is guarded behind a math verification gate and an optional parent PIN.' }
+      ],
+      modeOptions: [
+        { key: 'choice', label: 'Multiple choice', sub: 'Four large answer buttons' },
+        { key: 'keypad', label: 'On-screen keypad', sub: '0–9 touch pad' },
+        { key: 'visual', label: 'Visual counting', sub: 'Tap and count grid' }
+      ].map(m => ({
+        label: m.label,
+        sub: m.sub,
+        onClick: () => this.setSetting({ questionMode: m.key }),
+        style: {
+          border: 'none', borderRadius: 'var(--radius-md)', padding: '13.2px 17.6px', textAlign: 'left',
+          display: 'flex', flexDirection: 'column', gap: 4,
+          background: s.questionMode === m.key ? 'var(--color-accent)' : 'var(--color-bg)',
+          color: s.questionMode === m.key ? '#fff' : 'var(--color-neutral-900)'
+        },
+        subStyle: { fontSize: 12, fontWeight: 600, opacity: 0.8 }
+      })),
+      minDigit: s.minDigit, maxDigit: s.maxDigit, sumLimit: s.sumLimit,
+      onMinDigit: (e) => this.setSetting({ minDigit: parseInt(e.target.value, 10) }),
+      onMaxDigit: (e) => this.setSetting({ maxDigit: parseInt(e.target.value, 10) }),
+      onSumLimit: (e) => this.setSetting({ sumLimit: parseInt(e.target.value, 10) }),
+      voiceRate: s.voiceRate, voiceRateLabel: Number(s.voiceRate).toFixed(2) + 'x',
+      onVoiceRate: (e) => this.persist({ settings: Object.assign({}, s, { voiceRate: parseFloat(e.target.value) }) }),
+      toggles: toggleDef.map(t => ({
+        label: t.label,
+        state: s[t.key] ? 'On' : 'Off',
+        onClick: () => this.persist({ settings: Object.assign({}, s, { [t.key]: !s[t.key] }) }),
+        style: {
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 13.2,
+          border: 'none', borderRadius: 999, padding: '13.2px 17.6px', fontWeight: 800, fontSize: 15,
+          background: 'var(--color-surface)', color: 'var(--color-neutral-900)', textAlign: 'left'
+        },
+        pillStyle: {
+          fontSize: 12, fontWeight: 800, padding: '3px 12px', borderRadius: 999,
+          background: s[t.key] ? 'var(--color-accent-2-600)' : 'var(--color-neutral-400)', color: '#fff'
+        }
+      })),
+      progressSummary: p.totalSolved + ' problems solved · ' + p.stars + ' stars · ' + p.unlockedBadges.length + ' badges',
+      resetProgress: () => {
+        if (!window.confirm('Reset all student progress? This cannot be undone.')) return;
+        try { localStorage.removeItem(PROFILE_KEY); } catch (e) {}
+        this.sound('pop');
+        this.persist({ profile: defaultProfile(), badgeQueue: [] });
+      },
+
+      badgeModalOpen: !!newBadge,
+      newBadgeTitle: newBadge ? newBadge.title : '',
+      newBadgeDescription: newBadge ? newBadge.description : '',
+      dismissBadge: () => { this.sound('badge'); this.burst(); this.setState({ badgeQueue: this.state.badgeQueue.slice(1) }); },
+
+      confettiRef: this.confettiRef
+    };
+  }
+}
+
+</script>
+</body>
+</html>
