@@ -1,0 +1,1918 @@
+<title>Work, Earn, Break</title>
+
+<style>
+  /* ============================================================
+     TOKENS — light lives on bare :root; dark redefines tokens only.
+     Card surfaces stay near-white in BOTH themes on purpose:
+     a laminated PECS card is white card stock in every room.
+     ============================================================ */
+  :root {
+    --ground:      #E6EAF0;
+    --ground-2:    #F4F6FA;
+    --panel:       #FFFFFF;
+    --board:       #2E4162;
+    --board-edge:  #22314A;
+    --velcro:      #1B263A;
+    --velcro-dot:  #33455F;
+
+    --card:        #FCFCF8;
+    --card-edge:   #C8CBC2;
+    /* Anything printed ON the card never flips with the theme —
+       the stock stays white, so the ink has to stay dark. */
+    --card-ink:       #141C29;
+    --card-ink-2:     #5A6577;
+    --card-earn:      #DCF0E3;
+    --card-earn-ink:  #1E7A45;
+    --card-alert-ink: #B03A26;
+
+    --ink:         #141C29;
+    --ink-2:       #4E5A6C;
+    --ink-3:       #778395;
+    --line:        #C6CCD7;
+    --line-soft:   #DDE2EA;
+
+    --earn:        #2E9E5B;
+    --earn-soft:   #DCF0E3;
+    --alert:       #C2452F;
+    --alert-soft:  #F8E1DC;
+    --timer:       #C77415;
+    --timer-soft:  #FBEAD3;
+    --focus:       #2F6FD0;
+    --marker:      #FFD24A;
+    --marker-ink:  #7A5C00;
+
+    --scene-wall:  #DFE5EE;
+    --scene-floor: #C9D2DF;
+    --scene-desk:  #A8734A;
+    --scene-desk2: #8E5F3C;
+    --figure:      #1D2838;
+    --staff:       #66748A;
+
+    --shadow-1: 0 1px 2px rgba(20,28,41,.08), 0 4px 12px rgba(20,28,41,.06);
+    --shadow-card: 0 1px 0 rgba(0,0,0,.10), 0 3px 8px rgba(20,28,41,.20);
+
+    --font-card: ui-rounded, "SF Pro Rounded", "Varela Round", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    --font-ui: "Segoe UI Variable Text", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0F151F;
+      --ground-2:    #161F2C;
+      --panel:       #18222F;
+      --board:       #223145;
+      --board-edge:  #16202D;
+      --velcro:      #0C121B;
+      --velcro-dot:  #24334A;
+
+      --card:        #EFEEE7;
+      --card-edge:   #9AA0A8;
+
+      --ink:         #E7EDF5;
+      --ink-2:       #A3B0C2;
+      --ink-3:       #7C8AA0;
+      --line:        #2B3849;
+      --line-soft:   #222E3D;
+
+      --earn:        #52C482;
+      --earn-soft:   #14311F;
+      --alert:       #E5775F;
+      --alert-soft:  #3A1A13;
+      --timer:       #E7A44B;
+      --timer-soft:  #3A2A12;
+      --focus:       #6FA8F7;
+      --marker:      #E9B93A;
+      --marker-ink:  #3A2C00;
+
+      --scene-wall:  #1B2533;
+      --scene-floor: #131B26;
+      --scene-desk:  #7A5537;
+      --scene-desk2: #5F412A;
+      --figure:      #DDE5F0;
+      --staff:       #8695AA;
+
+      --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.35);
+      --shadow-card: 0 1px 0 rgba(0,0,0,.5), 0 4px 10px rgba(0,0,0,.5);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:      #0F151F;
+    --ground-2:    #161F2C;
+    --panel:       #18222F;
+    --board:       #223145;
+    --board-edge:  #16202D;
+    --velcro:      #0C121B;
+    --velcro-dot:  #24334A;
+
+    --card:        #EFEEE7;
+    --card-edge:   #9AA0A8;
+
+    --ink:         #E7EDF5;
+    --ink-2:       #A3B0C2;
+    --ink-3:       #7C8AA0;
+    --line:        #2B3849;
+    --line-soft:   #222E3D;
+
+    --earn:        #52C482;
+    --earn-soft:   #14311F;
+    --alert:       #E5775F;
+    --alert-soft:  #3A1A13;
+    --timer:       #E7A44B;
+    --timer-soft:  #3A2A12;
+    --focus:       #6FA8F7;
+    --marker:      #E9B93A;
+    --marker-ink:  #3A2C00;
+
+    --scene-wall:  #1B2533;
+    --scene-floor: #131B26;
+    --scene-desk:  #7A5537;
+    --scene-desk2: #5F412A;
+    --figure:      #DDE5F0;
+    --staff:       #8695AA;
+
+    --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 4px 14px rgba(0,0,0,.35);
+    --shadow-card: 0 1px 0 rgba(0,0,0,.5), 0 4px 10px rgba(0,0,0,.5);
+  }
+
+  /* ============================================================ */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 40px 24px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  :where(a, button, [tabindex]):focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ---------- Masthead ---------- */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 64ch;
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--alert);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  h1 {
+    margin: 0;
+    font-family: var(--font-card);
+    font-size: clamp(34px, 5.5vw, 54px);
+    line-height: 1.02;
+    letter-spacing: -.02em;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .dek { margin: 0; font-size: 18px; color: var(--ink-2); text-wrap: pretty; }
+
+  .privacy {
+    margin: 4px 0 0;
+    font-size: 13.5px;
+    color: var(--ink-3);
+    padding-left: 12px;
+    border-left: 3px solid var(--line);
+  }
+
+  /* ---------- Stage ---------- */
+
+  .stage { display: flex; flex-direction: column; gap: 18px; }
+
+  .stage-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .panel-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 650;
+    padding: 4px 12px 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .chip.is-calm  { color: var(--earn);  background: var(--earn-soft);  border-color: color-mix(in srgb, var(--earn) 30%, transparent); }
+  .chip.is-break { color: var(--timer); background: var(--timer-soft); border-color: color-mix(in srgb, var(--timer) 32%, transparent); }
+  .chip.is-alert { color: var(--alert); background: var(--alert-soft); border-color: color-mix(in srgb, var(--alert) 36%, transparent); }
+
+  /* ---------- Scene ---------- */
+
+  .scene-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 640 / 210;
+    background: var(--scene-wall);
+  }
+  .scene-wrap svg { display: block; width: 100%; height: 100%; }
+
+  /* SVG paint has to come from CSS — var() is not valid in a
+     presentation attribute, so every scene colour is a class. */
+  .s-wall   { fill: var(--scene-wall); }
+  .s-floor  { fill: var(--scene-floor); }
+  .s-rule   { fill: var(--line); opacity: .55; }
+  .s-desk   { fill: var(--scene-desk); }
+  .s-desk2  { fill: var(--scene-desk2); }
+  .s-chair  { fill: var(--line); }
+  .s-obj    { fill: none; stroke: var(--figure); opacity: .85; }
+  .s-fig    { fill: none; stroke: var(--figure); }
+  .s-staff  { fill: none; stroke: var(--staff); }
+  .s-staff-head { fill: var(--staff); stroke: none; }
+  .s-head   { fill: var(--scene-wall); stroke: var(--figure); }
+  .s-eye    { fill: var(--figure); stroke: none; }
+  .s-alert  { fill: none; stroke: var(--alert); }
+  .s-dial   { fill: var(--panel); stroke: var(--line); }
+  .s-track  { fill: none; stroke: var(--line); opacity: .5; }
+  .s-arc    { fill: none; stroke: var(--timer); }
+  .s-time   { fill: var(--ink); font-family: var(--font-mono); font-size: 13px; font-weight: 700; }
+
+  #mouth { fill: none; stroke: var(--figure); }
+  #mouth.is-yell { fill: var(--alert); stroke: var(--alert); }
+
+  /* where the earned Chromebook card rests on the device desk */
+  #anchorDesk {
+    position: absolute;
+    left: 73.1%; top: 24.8%;
+    width: 58px; height: 68px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  /* the two cards an adult is holding after a removal */
+  .hold-strip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--line-soft);
+    background: var(--ground-2);
+    transition: background .3s ease;
+  }
+  .hold-strip.is-holding { background: var(--alert-soft); }
+
+  .hold-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+  .hold-strip.is-holding .hold-label { color: var(--alert); }
+
+  .hold-slot {
+    width: 78px; height: 74px;
+    flex: 0 0 auto;
+    border-radius: var(--r-sm);
+    border: 2px dashed var(--line);
+  }
+  .hold-strip.is-holding .hold-slot {
+    border-color: color-mix(in srgb, var(--alert) 45%, transparent);
+  }
+
+  .hold-note { font-size: 12.5px; color: var(--ink-3); line-height: 1.35; }
+
+  .readout {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px 16px;
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--line-soft);
+    margin: 0;
+    font-size: 14px;
+  }
+  .readout dt {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+  .readout dd { margin: 0; font-weight: 600; color: var(--ink); }
+  .readout dd.mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 15px;
+  }
+
+  /* fixed height so the panel never reflows mid-animation and
+     leaves a flying card landing at a stale position */
+  .log {
+    margin: 0; padding: 0; list-style: none;
+    min-height: 80px;
+    display: flex; flex-direction: column; gap: 3px;
+    font-weight: 500; color: var(--ink-2); font-size: 13.5px;
+  }
+  .log li { text-wrap: pretty; }
+  .log li:first-child { color: var(--ink); font-weight: 650; }
+  .log li.ev-alert:first-child { color: var(--alert); }
+  .log li.ev-earn:first-child  { color: var(--earn); }
+
+  /* ---------- Board ---------- */
+
+  .board {
+    background:
+      radial-gradient(circle at 22% 10%, rgba(255,255,255,.07), transparent 62%),
+      var(--board);
+    border-top: 3px solid var(--board-edge);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .board-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.64);
+    margin: 0 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .board-section-label small {
+    font-size: 11px;
+    letter-spacing: .02em;
+    text-transform: none;
+    font-weight: 500;
+    color: rgba(255,255,255,.46);
+  }
+
+  .velcro {
+    background-color: var(--velcro);
+    background-image: radial-gradient(var(--velcro-dot) 1px, transparent 1.1px);
+    background-size: 7px 7px;
+    border-radius: var(--r-md);
+    padding: 12px;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,.45);
+  }
+
+  /* the contingency row: [voice][hands] -> [chromebook] */
+  .rule-row { display: flex; align-items: stretch; gap: 10px; }
+  .rule-group { display: flex; gap: 10px; flex: 1 1 auto; min-width: 0; }
+  .rule-group.device-group { flex: 0 1 33%; }
+
+  .rule-arrow {
+    flex: 0 0 auto;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: rgba(255,255,255,.55);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transition: color .25s ease;
+  }
+  .rule-arrow svg { display: block; }
+  .rule-row.is-broken .rule-arrow { color: var(--alert); }
+
+  .slot {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: 1 / 1.14;
+    max-height: 172px;
+    border-radius: var(--r-sm);
+  }
+
+  /* the empty velcro patch revealed under a lifted card */
+  .slot::before {
+    content: attr(data-empty);
+    position: absolute;
+    inset: 0;
+    border-radius: var(--r-sm);
+    border: 2px dashed rgba(255,255,255,.26);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    line-height: 1.25;
+    color: rgba(255,255,255,.42);
+  }
+  .slot.is-lost::before   { border-color: var(--alert); color: var(--alert); }
+  .slot.is-earned::before { border-color: var(--earn);  color: var(--earn); }
+
+  /* ---------- PECS card ---------- */
+
+  .pec {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--card);
+    border: 2px solid var(--card-edge);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 5px 8px;
+    color: var(--card-ink);
+    font-family: var(--font-card);
+    text-align: center;
+    transition: opacity .18s ease;
+  }
+  .pec.is-off { opacity: 0; }
+  .pec .glyph { width: 44px; height: 44px; color: var(--card-ink); flex: 0 0 auto; }
+  .pec .cap {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+  .pec.tone-earn  { border-color: var(--card-earn-ink); }
+  .pec.tone-alert { border-color: var(--card-alert-ink); }
+
+  #flyLayer .pec { position: absolute; transition: none; }
+  #flyLayer .parked { box-shadow: 0 6px 18px rgba(0,0,0,.4); }
+  #flyLayer .parked { padding: 8px 3px 6px; gap: 4px; }
+  #flyLayer .parked .glyph { width: 30px; height: 30px; }
+  #flyLayer .parked .cap { font-size: 8.5px; letter-spacing: 0; }
+
+  /* ---------- Schedule strip ---------- */
+
+  .schedule { display: flex; flex-direction: column; gap: 8px; }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px 8px 10px;
+    background: var(--card);
+    border: 2px solid var(--card-edge);
+    border-left-width: 6px;
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-card);
+    color: var(--card-ink);
+    font-family: var(--font-card);
+    min-height: 58px;
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+  }
+  .step .glyph { width: 32px; height: 32px; flex: 0 0 auto; color: var(--card-ink); }
+  .step .cap { font-size: 14px; font-weight: 700; letter-spacing: .02em; line-height: 1.2; }
+  .step .sub {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--card-ink-2);
+  }
+  .step.type-earn {
+    border-color: var(--card-earn-ink);
+    background: linear-gradient(90deg, var(--card-earn), var(--card) 48%);
+  }
+  .step.type-earn .glyph { color: var(--card-earn-ink); }
+
+  .step.is-current {
+    transform: translateX(10px);
+    box-shadow: 0 0 0 3px var(--marker), var(--shadow-card);
+  }
+  /* a moved card leaves the velcro patch it was stuck to, the way
+     the real strip does — not an invisible gap */
+  .step.is-done {
+    background: transparent;
+    border: 2px dashed rgba(255,255,255,.16);
+    box-shadow: none;
+    pointer-events: none;
+  }
+  .step.is-done > * { visibility: hidden; }
+
+  .step .now {
+    margin-left: auto;
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--marker-ink);
+    background: var(--marker);
+    padding: 2px 8px;
+    border-radius: 999px;
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+  .step.is-current .now { opacity: 1; }
+
+  #flyLayer .step { position: absolute; transition: none; }
+
+  /* ---------- Done pocket ---------- */
+
+  .pocket {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px 16px;
+    border-radius: var(--r-md);
+    background: rgba(0,0,0,.24);
+    border: 2px solid rgba(255,255,255,.16);
+    border-top-width: 8px;
+    flex-wrap: wrap;
+  }
+  .pocket .glyph { width: 28px; height: 28px; color: rgba(255,255,255,.7); flex: 0 0 auto; }
+  .pocket-text {
+    font-family: var(--font-card);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.9);
+  }
+  .pocket-count {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 12.5px;
+    color: rgba(255,255,255,.6);
+  }
+  .pocket-stack { display: flex; gap: 3px; }
+  .pocket-stack i {
+    width: 9px; height: 14px;
+    border-radius: 2px;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+  }
+
+  /* ---------- Controls ---------- */
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-1);
+  }
+
+  .controls-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-right: 4px;
+  }
+
+  button.btn {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 650;
+    color: var(--ink);
+    background: var(--ground-2);
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: border-color .15s ease, transform .1s ease, opacity .15s ease;
+  }
+  button.btn:hover:not(:disabled) { border-color: var(--ink-3); }
+  button.btn:active:not(:disabled) { transform: translateY(1px); }
+  button.btn:disabled { opacity: .38; cursor: not-allowed; }
+
+  button.btn.alert {
+    color: var(--alert);
+    background: var(--alert-soft);
+    border-color: color-mix(in srgb, var(--alert) 42%, transparent);
+  }
+  button.btn.alert:hover:not(:disabled) { border-color: var(--alert); }
+
+  button.btn.earn {
+    color: var(--earn);
+    background: var(--earn-soft);
+    border-color: color-mix(in srgb, var(--earn) 44%, transparent);
+  }
+  button.btn.earn:hover:not(:disabled) { border-color: var(--earn); }
+
+  .controls .spacer { flex: 1 1 auto; min-width: 0; }
+
+  .hint { font-size: 12.5px; color: var(--ink-3); max-width: 32ch; line-height: 1.4; }
+
+  #flyLayer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 40;
+  }
+
+  /* ---------- Notes ---------- */
+
+  .notes { display: flex; flex-direction: column; gap: 20px; }
+
+  h2 {
+    margin: 0;
+    font-family: var(--font-card);
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .section-intro { margin: 6px 0 0; color: var(--ink-2); max-width: 68ch; text-wrap: pretty; }
+
+  .note-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+    gap: 14px;
+  }
+
+  .note {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 18px 18px 20px;
+    box-shadow: var(--shadow-1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .note h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .note h3 .dot { width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; }
+  .note h3 .dot.n { background: var(--ink-3); }
+  .note h3 .dot.g { background: var(--earn); }
+  .note h3 .dot.r { background: var(--alert); }
+  .note h3 .dot.a { background: var(--timer); }
+  .note p { margin: 0; font-size: 14.5px; color: var(--ink-2); text-wrap: pretty; }
+  .note ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14.5px;
+    color: var(--ink-2);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .note strong { color: var(--ink); font-weight: 650; }
+
+  .script {
+    font-family: var(--font-card);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--ground-2);
+    border-left: 4px solid var(--earn);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    padding: 10px 14px;
+    margin: 2px 0 0;
+  }
+  .script.is-alert { border-left-color: var(--alert); }
+  .script span {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 3px;
+  }
+
+  .questions {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--timer);
+    border-radius: var(--r-md);
+    padding: 22px 24px 24px;
+    box-shadow: var(--shadow-1);
+  }
+  .questions h2 { font-size: 21px; }
+  .questions dl {
+    margin: 16px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 18px 30px;
+  }
+  .questions dl > div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 12px;
+    border-left: 2px solid var(--line-soft);
+  }
+  .questions dt { font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+  .questions dd { margin: 0; font-size: 14px; color: var(--ink-2); text-wrap: pretty; }
+  .questions dd em {
+    display: block;
+    margin-top: 3px;
+    font-style: normal;
+    font-size: 12.5px;
+    color: var(--ink-3);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    font-size: 13px;
+    color: var(--ink-3);
+    max-width: 72ch;
+    text-wrap: pretty;
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 940px) {
+    .stage-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .page { padding: 28px 16px 56px; gap: 32px; }
+    .rule-row { flex-wrap: wrap; }
+    .rule-group.device-group { flex: 1 1 100%; }
+    .rule-group.device-group .slot { aspect-ratio: 2.4 / 1; }
+    .rule-arrow {
+      flex: 1 1 100%;
+      flex-direction: row;
+      justify-content: center;
+      gap: 7px;
+      padding: 2px 0;
+    }
+    .rule-arrow svg { transform: rotate(90deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      transition-duration: .01ms !important;
+    }
+    .step.is-current { transform: none; }
+  }
+</style>
+
+<!-- ============ icon sprite ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="g-taskbox">
+      <path d="M11 15 h26 v4 h-26z"/>
+      <path d="M13 19 h22 l-2 21 h-18z"/>
+      <path d="M17 15 v-4 h14 v4"/>
+      <circle cx="20" cy="29" r="3.4" fill="currentColor"/>
+      <path d="M26 26 h6 v6 h-6z" fill="currentColor"/>
+    </g>
+    <g id="g-sort">
+      <path d="M5 27 h13 v13 h-13z"/>
+      <path d="M30 27 h13 v13 h-13z"/>
+      <circle cx="11.5" cy="10.5" r="5"/>
+      <path d="M31.5 5.5 h11 v11 h-11z"/>
+      <path d="M11.5 17 v6 m0 0 l-3-3 m3 3 l3-3"/>
+      <path d="M37 17.5 v6 m0 0 l-3-3 m3 3 l3-3"/>
+    </g>
+    <g id="g-earn">
+      <path fill="currentColor" d="M24 5.5 L29.2 18.4 L43 19.6 L32.5 28.7 L35.7 42.2 L24 35 L12.3 42.2 L15.5 28.7 L5 19.6 L18.8 18.4 Z"/>
+    </g>
+    <g id="g-book">
+      <path d="M12 12 h24 v19 h-24z"/>
+      <path d="M6 31 h36 l4 7 h-44z"/>
+      <path d="M20 34.5 h8"/>
+    </g>
+    <g id="g-math">
+      <path d="M6 9 h36 v23 h-36z"/>
+      <path d="M19 32 h10 l2 8 h-14z"/>
+      <path d="M13 20 h9 M17.5 15.5 v9"/>
+      <path d="M27 17 h8 M27 23 h8"/>
+    </g>
+    <g id="g-clean">
+      <path d="M11 18 h26 l-2.5 22 h-21z"/>
+      <path d="M7 18 h34"/>
+      <path d="M19 12 h10"/>
+      <path d="M24 2 v9 M24 11 l-3.5-3.5 M24 11 l3.5-3.5"/>
+    </g>
+    <g id="g-voice">
+      <circle cx="19" cy="20" r="12"/>
+      <circle cx="15" cy="18" r="1.7" fill="currentColor"/>
+      <circle cx="23.5" cy="18" r="1.7" fill="currentColor"/>
+      <path d="M14.5 25.5 q4.5 3 9 0"/>
+      <path d="M35 15 q3.6 5 0 10"/>
+      <path d="M40.5 11.5 q6 8.5 0 17" opacity=".45"/>
+    </g>
+    <g id="g-hands">
+      <path d="M7 25 h13 v8 a6.5 6.5 0 0 1 -13 0z"/>
+      <path d="M9.5 25 v-7 M13.5 25 v-10 M17.5 25 v-7"/>
+      <path d="M28 25 h13 v8 a6.5 6.5 0 0 1 -13 0z"/>
+      <path d="M30.5 25 v-7 M34.5 25 v-10 M38.5 25 v-7"/>
+    </g>
+    <g id="g-done">
+      <path d="M5 17 h38 v20 a2 2 0 0 1 -2 2 h-34 a2 2 0 0 1 -2 -2z"/>
+      <path d="M5 17 l19 11 19-11"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="page">
+
+  <header class="masthead">
+    <p class="eyebrow">Mockup — for team review</p>
+    <h1>Work, Earn, Break</h1>
+    <p class="dek">
+      A picture schedule for Student&nbsp;C, with the Chromebook tied to calm voice and calm
+      hands. Use the buttons under the board to watch what happens when he yells or his hands
+      stop being safe.
+    </p>
+    <p class="privacy">
+      Draft for staff discussion. No name, date of birth, or diagnostic information —
+      &ldquo;Student&nbsp;C&rdquo; throughout.
+    </p>
+  </header>
+
+  <section class="stage" aria-label="Interactive mockup of the board">
+    <div class="stage-grid">
+
+      <!-- ============ LEFT: the room ============ -->
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-label">The room</span>
+          <span class="chip is-calm" id="statusChip">Working</span>
+        </div>
+
+        <div class="scene-wrap">
+          <svg viewBox="10 170 640 210" role="img" aria-labelledby="sceneTitle sceneDesc">
+            <title id="sceneTitle">Student C&rsquo;s work area</title>
+            <desc id="sceneDesc">A stick figure student sits at a work desk on the left. A second desk on the right holds a Chromebook. A staff member stands nearby.</desc>
+
+            <!-- room -->
+            <rect class="s-wall" x="0" y="0" width="680" height="356"/>
+            <rect class="s-floor" x="0" y="356" width="680" height="64"/>
+            <rect class="s-rule" x="0" y="352" width="680" height="5"/>
+
+            <!-- work desk -->
+            <rect class="s-desk"  x="150" y="252" width="186" height="11" rx="3"/>
+            <rect class="s-desk2" x="160" y="263" width="9" height="89"/>
+            <rect class="s-desk2" x="317" y="263" width="9" height="89"/>
+
+            <!-- task materials on the work desk -->
+            <g class="s-obj" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M178 252 v-20 h34 v20"/>
+              <path d="M174 232 h42"/>
+              <circle cx="188" cy="243" r="4"/>
+              <path d="M198 239 h9 v9 h-9z"/>
+              <path d="M244 252 v-13 h26 v13"/>
+              <path d="M282 252 v-13 h26 v13"/>
+            </g>
+
+            <!-- work chair -->
+            <g class="s-chair">
+              <rect x="84" y="298" width="58" height="9" rx="3"/>
+              <rect x="89" y="307" width="7" height="45"/>
+              <rect x="130" y="307" width="7" height="45"/>
+              <rect x="84" y="248" width="7" height="54" rx="3"/>
+            </g>
+
+            <!-- device desk -->
+            <rect class="s-desk"  x="452" y="252" width="186" height="11" rx="3"/>
+            <rect class="s-desk2" x="462" y="263" width="9" height="89"/>
+            <rect class="s-desk2" x="619" y="263" width="9" height="89"/>
+
+            <!-- chromebook on the device desk -->
+            <g class="s-obj" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M520 252 v-30 h44 v30"/>
+              <path d="M512 252 h60"/>
+            </g>
+
+            <!-- device chair -->
+            <g class="s-chair">
+              <rect x="384" y="298" width="58" height="9" rx="3"/>
+              <rect x="389" y="307" width="7" height="45"/>
+              <rect x="430" y="307" width="7" height="45"/>
+              <rect x="384" y="248" width="7" height="54" rx="3"/>
+            </g>
+
+            <!-- break timer, visible during device time -->
+            <g id="timerRing" opacity="0" transform="translate(604,212)">
+              <circle class="s-dial" r="28" stroke-width="2"/>
+              <circle class="s-track" r="21" stroke-width="6"/>
+              <circle class="s-arc" id="timerArc" r="21" stroke-width="6" stroke-linecap="round"
+                      transform="rotate(-90)" stroke-dasharray="131.95" stroke-dashoffset="0"/>
+              <text class="s-time" id="timerText" y="5" text-anchor="middle">0:18</text>
+            </g>
+
+            <!-- staff stick figure -->
+            <g transform="translate(48,296)" class="s-staff" stroke-width="5"
+               stroke-linecap="round" stroke-linejoin="round">
+              <circle class="s-staff-head" cx="0" cy="-66" r="16"/>
+              <path d="M0 -50 L0 0"/>
+              <path d="M0 -44 L16 -30 L24 -26"/>
+              <path d="M0 -44 L-13 -24 L-16 -4"/>
+              <path d="M0 0 L6 28 L8 56"/>
+              <path d="M0 0 L-7 28 L-10 56"/>
+            </g>
+
+            <!-- student stick figure -->
+            <g id="student" transform="translate(0,0)">
+              <g id="stuRoot" transform="translate(112,296)" class="s-fig" stroke-width="5.5"
+                 stroke-linecap="round" stroke-linejoin="round">
+                <path id="stuLegB" d="M0 2 L28 4 L31 54" opacity=".45"/>
+                <path id="stuArmB" d="M0 -42 L18 -30 L36 -38" opacity=".45"/>
+                <path id="stuTorso" d="M0 0 L0 -46"/>
+                <path id="stuLegA" d="M0 0 L30 -2 L33 54"/>
+                <path id="stuArmA" d="M0 -42 L22 -38 L40 -44"/>
+                <g id="stuHeadG" transform="translate(0,-64)">
+                  <circle class="s-head" r="17" stroke-width="5"/>
+                  <circle class="s-eye" cx="4" cy="-4" r="2.1"/>
+                  <circle class="s-eye" cx="12" cy="-4" r="2.1"/>
+                  <path id="mouth" d="M4 6 q4 2.5 8 0" stroke-width="3"/>
+                </g>
+                <g id="yellFx" class="s-alert" opacity="0" stroke-width="4">
+                  <path d="M22 -80 l10 -7 M27 -66 l12 -2 M18 -92 l5 -11"/>
+                  <path d="M42 -88 l16 -11 M46 -70 l18 -3" opacity=".5"/>
+                </g>
+                <g id="handsFx" class="s-alert" opacity="0" stroke-width="4">
+                  <path d="M62 -50 q7 -6 0 -13 M64 -32 q8 5 1 13"/>
+                  <path d="M72 -44 q9 -7 0 -17" opacity=".5"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+
+          <div id="anchorDesk" aria-hidden="true"></div>
+        </div>
+
+        <div class="hold-strip" id="holdStrip">
+          <span class="hold-label">Staff is holding</span>
+          <div class="hold-slot" id="holdA"></div>
+          <div class="hold-slot" id="holdB"></div>
+          <span class="hold-note" id="holdNote">Nothing &mdash; all three cards are up.</span>
+        </div>
+
+        <dl class="readout">
+          <dt>Now</dt>
+          <dd id="nowStep">Task box</dd>
+          <dt>Break timer</dt>
+          <dd class="mono" id="nowTimer">&mdash;</dd>
+          <dt>What happened</dt>
+          <dd><ul class="log" id="log" aria-live="polite"></ul></dd>
+        </dl>
+      </div>
+
+      <!-- ============ RIGHT: the board ============ -->
+      <div class="panel">
+        <div class="panel-head">
+          <span class="panel-label">The board</span>
+          <span class="chip is-calm" id="cycleChip">Cycle 1</span>
+        </div>
+
+        <div class="board">
+
+          <div>
+            <p class="board-section-label">
+              Top strip <small>— these three stay up together</small>
+            </p>
+            <div class="velcro">
+              <div class="rule-row" id="ruleRow">
+                <div class="rule-group">
+                  <div class="slot" id="slot-voice" data-empty="Lost — earn it back">
+                    <div class="pec">
+                      <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                           stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                           aria-hidden="true"><use href="#g-voice"/></svg>
+                      <span class="cap">Calm voice</span>
+                    </div>
+                  </div>
+                  <div class="slot" id="slot-hands" data-empty="Lost — earn it back">
+                    <div class="pec">
+                      <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                           stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                           aria-hidden="true"><use href="#g-hands"/></svg>
+                      <span class="cap">Calm hands</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rule-arrow" aria-hidden="true">
+                  <svg width="26" height="14" viewBox="0 0 26 14" fill="none" stroke="currentColor"
+                       stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 7 h22 M17 2 l6 5 -6 5"/>
+                  </svg>
+                  <span>Keeps</span>
+                </div>
+
+                <div class="rule-group device-group">
+                  <div class="slot" id="slot-device" data-empty="Off the board">
+                    <div class="pec">
+                      <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                           stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                           aria-hidden="true"><use href="#g-book"/></svg>
+                      <span class="cap">Chromebook</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p class="board-section-label">
+              Schedule strip <small>— work top to bottom</small>
+            </p>
+            <div class="schedule" id="schedule"></div>
+          </div>
+
+          <div class="pocket" id="pocket">
+            <svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor"
+                 stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true"><use href="#g-done"/></svg>
+            <span class="pocket-text">Done</span>
+            <span class="pocket-stack" id="pocketStack"></span>
+            <span class="pocket-count" id="pocketCount">0 cards</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <span class="controls-label">Try it</span>
+      <button class="btn" id="btnPlay" type="button">Pause</button>
+      <button class="btn alert" id="btnYell" type="button">He yells</button>
+      <button class="btn alert" id="btnHands" type="button">Hands not safe</button>
+      <button class="btn earn" id="btnCalm" type="button" disabled>He&rsquo;s calm again</button>
+      <button class="btn" id="btnReset" type="button">Start over</button>
+      <span class="spacer"></span>
+      <span class="hint">The demo runs fast so it fits a meeting. In the room, plan a 5&#8209;minute break.</span>
+    </div>
+  </section>
+
+  <!-- ============ staff reference ============ -->
+  <section class="notes">
+    <div>
+      <h2>What staff do</h2>
+      <p class="section-intro">
+        The whole plan is three rules. If every adult in the room runs them the same way, the
+        board does the teaching and nobody has to negotiate.
+      </p>
+    </div>
+
+    <div class="note-grid">
+
+      <div class="note">
+        <h3><span class="dot n"></span>1 &nbsp;Work the strip</h3>
+        <p>
+          He pulls the top card off the strip, does that activity, then Velcros the card into
+          the <strong>Done</strong> pocket at the bottom. The next card down becomes the top card.
+        </p>
+        <p>
+          Hand-over-hand the card to Done at first if he walks away from it. Moving the card is
+          part of the routine, not an extra step.
+        </p>
+      </div>
+
+      <div class="note">
+        <h3><span class="dot g"></span>2 &nbsp;Earn the break</h3>
+        <p>
+          When he reaches a <strong>green star</strong>, he has earned it. He takes the
+          <strong>Chromebook card</strong> off the top strip, carries it to the device desk, and
+          it stays there while the timer runs.
+        </p>
+        <p class="script"><span>Say</span>You earned it. Chromebook.</p>
+        <p>
+          When the timer goes off, the Chromebook card goes <strong>back up on the top
+          strip</strong> and he returns to the work desk. Putting the card back is what ends the
+          break &mdash; not an adult closing the laptop.
+        </p>
+      </div>
+
+      <div class="note">
+        <h3><span class="dot r"></span>3 &nbsp;Two cards come off</h3>
+        <p>
+          Yelling takes down <strong>Calm voice</strong>. Unsafe hands takes down
+          <strong>Calm hands</strong>. Either one also takes down the
+          <strong>Chromebook</strong> &mdash; every time, no exceptions.
+        </p>
+        <p class="script is-alert"><span>Say &mdash; flat, once</span>No calm voice. No Chromebook.</p>
+        <p>
+          Then stop talking. Take both cards down where he can see it happen and hold them.
+          No explaining, no warnings, no counting.
+        </p>
+      </div>
+
+      <div class="note">
+        <h3><span class="dot g"></span>Giving the cards back</h3>
+        <p>
+          As soon as he is calm, hand him the <strong>Calm voice</strong> card and let
+          <em>him</em> put it back up. Then hand him the <strong>Chromebook</strong> card and let
+          him put that up too.
+        </p>
+        <p class="script"><span>Say</span>Calm voice. Put it up. &nbsp;&middot;&nbsp; Chromebook back.</p>
+        <p>
+          He always re-Velcros the cards himself. That is the part that teaches the link. Then
+          go back to the same schedule card he was on.
+        </p>
+      </div>
+
+      <div class="note">
+        <h3><span class="dot n"></span>Prep list</h3>
+        <ul>
+          <li>Laminated cards: calm voice, calm hands, Chromebook, task box, sorting, math,
+            clean up, and two green stars</li>
+          <li>Velcro dots &mdash; hook on the board, loop on the cards, so it is the same
+            everywhere</li>
+          <li>A Done pocket or envelope at the bottom of the board</li>
+          <li>A visual countdown timer at the device desk</li>
+          <li>A duplicate set in the go-bag for specials and related services</li>
+        </ul>
+      </div>
+
+      <div class="note">
+        <h3><span class="dot a"></span>What we track</h3>
+        <p>
+          Tally two things per session: how many <strong>cycles</strong> he finishes, and how
+          many <strong>card removals</strong> happen. That is the whole data sheet.
+        </p>
+        <p>
+          If removals climb, the work is probably running too long between stars rather than the
+          plan failing. Shorten the run before changing anything else.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ open questions ============ -->
+  <section class="questions">
+    <h2>Decisions the team still needs to make</h2>
+    <p class="section-intro">
+      The mockup had to pick an answer for each of these so it could run. None of them are
+      settled &mdash; bring an opinion.
+    </p>
+    <dl>
+      <div>
+        <dt>How long is the break?</dt>
+        <dd>The demo uses a short timer so it fits inside a meeting.
+          <em>Mockup assumes: 5 minutes in the room.</em></dd>
+      </div>
+      <div>
+        <dt>What if he yells during Chromebook time?</dt>
+        <dd>Right now the break ends and the card comes off. The alternative is pausing the
+          timer and giving the remaining minutes back once he is calm.
+          <em>Mockup assumes: the break is over.</em></dd>
+      </div>
+      <div>
+        <dt>How calm, for how long, before cards go back?</dt>
+        <dd>Immediately, or after a set quiet interval? A fixed number is easier to run
+          consistently across staff.
+          <em>Mockup assumes: staff judgment, returned right away.</em></dd>
+      </div>
+      <div>
+        <dt>Where do removed cards go?</dt>
+        <dd>Held in an adult&rsquo;s hand where he can see them, or into a pocket on the board?
+          <em>Mockup assumes: staff holds them in view.</em></dd>
+      </div>
+      <div>
+        <dt>What counts as &ldquo;hands not safe&rdquo;?</dt>
+        <dd>This needs one written definition every adult uses, or the rule gets applied
+          differently by different people and stops meaning anything.
+          <em>Mockup assumes: not yet defined.</em></dd>
+      </div>
+      <div>
+        <dt>Does this ride along to specials?</dt>
+        <dd>Same board and same rules in art, music, and PE, or work area only?
+          <em>Mockup assumes: work area only.</em></dd>
+      </div>
+    </dl>
+  </section>
+
+  <footer>
+    Mockup only &mdash; not an approved behavior intervention plan. Any version that goes into
+    practice should be reviewed by the IEP team and matched to the current FBA before staff
+    begin running it.
+  </footer>
+
+  <div id="flyLayer" aria-hidden="true"></div>
+  <p class="sr-only" id="live" aria-live="assertive"></p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------- data ---------------- */
+
+  var SCHEDULE = [
+    { glyph: "g-taskbox", label: "Task box",  sub: "Sit and finish the bin",     ms: 7000 },
+    { glyph: "g-sort",    label: "Sorting",   sub: "Shapes into the right tray", ms: 7000 },
+    { glyph: "g-earn",    label: "Earn",      sub: "Take the Chromebook card",   type: "earn" },
+    { glyph: "g-math",    label: "Math",      sub: "On the computer",            ms: 8000 },
+    { glyph: "g-clean",   label: "Clean up",  sub: "Put my area back",           ms: 6000 },
+    { glyph: "g-earn",    label: "Earn",      sub: "Take the Chromebook card",   type: "earn" }
+  ];
+
+  var BREAK_MS = 18000;
+  var WALK_MS  = 1100;
+  var ARC_LEN  = 131.95;
+
+  /* ---------------- refs ---------------- */
+
+  var $ = function (s) { return document.querySelector(s); };
+
+  var scheduleEl  = $("#schedule");
+  var flyLayer    = $("#flyLayer");
+  var statusChip  = $("#statusChip");
+  var cycleChip   = $("#cycleChip");
+  var nowStep     = $("#nowStep");
+  var nowTimer    = $("#nowTimer");
+  var logEl       = $("#log");
+  var live        = $("#live");
+  var pocket      = $("#pocket");
+  var pocketCount = $("#pocketCount");
+  var pocketStack = $("#pocketStack");
+  var ruleRow     = $("#ruleRow");
+
+  var studentG  = $("#student");
+  var stuRoot   = $("#stuRoot");
+  var stuArmA   = $("#stuArmA");
+  var stuArmB   = $("#stuArmB");
+  var stuLegA   = $("#stuLegA");
+  var stuLegB   = $("#stuLegB");
+  var stuHeadG  = $("#stuHeadG");
+  var mouth     = $("#mouth");
+  var yellFx    = $("#yellFx");
+  var handsFx   = $("#handsFx");
+  var timerRing = $("#timerRing");
+  var timerArc  = $("#timerArc");
+  var timerText = $("#timerText");
+
+  var btnPlay  = $("#btnPlay");
+  var btnYell  = $("#btnYell");
+  var btnHands = $("#btnHands");
+  var btnCalm  = $("#btnCalm");
+  var btnReset = $("#btnReset");
+
+  var holdStrip = $("#holdStrip");
+  var holdNote  = $("#holdNote");
+
+  var SLOT = { voice: $("#slot-voice"), hands: $("#slot-hands"), device: $("#slot-device") };
+  var ANCHOR = { holdA: $("#holdA"), holdB: $("#holdB"), desk: $("#anchorDesk") };
+
+  var HOLD_EMPTY = "Nothing — all three cards are up.";
+  var HOLD_FULL  = "He gets these back when he is calm — and he puts them up himself.";
+
+  /* ---------------- state ---------------- */
+
+  var S = {
+    gen: 0,           // bumped on reset so stale loops exit
+    running: true,
+    disrupted: null,  // null | "voice" | "hands"
+    step: 0,
+    cycle: 1,
+    done: 0,
+    onDevice: false,
+    cutBreak: false,
+    deviceAt: "board" // board | desk | staff
+  };
+
+  var FLOAT = {};
+  var TIMERS = [];
+
+  /* ---------------- poses ---------------- */
+
+  var POSE = {
+    sit: {
+      hipY: 296,
+      armA: "M0 -42 L22 -38 L40 -44",
+      armB: "M0 -42 L18 -30 L36 -38",
+      legA: "M0 0 L30 -2 L33 54",
+      legB: "M0 2 L28 4 L31 54",
+      head: "translate(0,-64)"
+    },
+    walk: {
+      hipY: 292,
+      armA: "M0 -44 L18 -26 L26 -8",
+      armB: "M0 -44 L-16 -26 L-24 -10",
+      legA: "M0 0 L20 28 L28 56",
+      legB: "M0 0 L-16 28 L-24 56",
+      head: "translate(0,-66)"
+    },
+    yell: {
+      hipY: 296,
+      armA: "M0 -42 L26 -56 L34 -76",
+      armB: "M0 -42 L14 -58 L18 -80",
+      legA: "M0 0 L30 -2 L33 54",
+      legB: "M0 2 L28 4 L31 54",
+      head: "translate(0,-64) rotate(-12)"
+    },
+    hands: {
+      hipY: 296,
+      armA: "M0 -42 L30 -50 L56 -42",
+      armB: "M0 -42 L26 -30 L52 -48",
+      legA: "M0 0 L30 -2 L33 54",
+      legB: "M0 2 L28 4 L31 54",
+      head: "translate(0,-64)"
+    }
+  };
+
+  function setPose(name) {
+    var p = POSE[name];
+    stuRoot.setAttribute("transform", "translate(112," + p.hipY + ")");
+    stuArmA.setAttribute("d", p.armA);
+    stuArmB.setAttribute("d", p.armB);
+    stuLegA.setAttribute("d", p.legA);
+    stuLegB.setAttribute("d", p.legB);
+    stuHeadG.setAttribute("transform", p.head);
+
+    var yelling = name === "yell";
+    yellFx.setAttribute("opacity", yelling ? "1" : "0");
+    handsFx.setAttribute("opacity", name === "hands" ? "1" : "0");
+    mouth.setAttribute("d", yelling
+      ? "M2 4 a6 6 0 1 0 12 0 a6 6 0 1 0 -12 0"
+      : "M4 6 q4 2.5 8 0");
+    mouth.classList.toggle("is-yell", yelling);
+  }
+
+  function walkTo(where) {
+    studentG.style.transition = reduce ? "none" : "transform " + WALK_MS + "ms cubic-bezier(.5,0,.5,1)";
+    studentG.setAttribute("transform", "translate(" + (where === "device" ? 300 : 0) + ",0)");
+  }
+
+  /* ---------------- timing helpers ---------------- */
+
+  function sleep(ms, gen) {
+    return new Promise(function (res) {
+      var id = setTimeout(function () {
+        res(gen !== undefined && gen !== S.gen ? "abort" : "ok");
+      }, ms);
+      TIMERS.push(id);
+    });
+  }
+
+  // Stops counting while paused, or while he is not calm.
+  function work(ms, gen) {
+    return new Promise(function (res) {
+      var left = ms, last = performance.now();
+      var id = setInterval(function () {
+        if (gen !== S.gen) { clearInterval(id); res("abort"); return; }
+        var now = performance.now(), dt = now - last;
+        last = now;
+        if (S.running && !S.disrupted) left -= dt;
+        if (left <= 0) { clearInterval(id); res("ok"); }
+      }, 60);
+      TIMERS.push(id);
+    });
+  }
+
+  function untilCalm(gen) {
+    return new Promise(function (res) {
+      var id = setInterval(function () {
+        if (gen !== S.gen) { clearInterval(id); res("abort"); return; }
+        if (!S.disrupted) { clearInterval(id); res("ok"); }
+      }, 90);
+      TIMERS.push(id);
+    });
+  }
+
+  function clearTimers() {
+    TIMERS.forEach(function (id) { clearTimeout(id); clearInterval(id); });
+    TIMERS = [];
+  }
+
+  /* ---------------- status + log ---------------- */
+
+  function chip(text, kind) {
+    statusChip.textContent = text;
+    statusChip.className = "chip " + kind;
+  }
+
+  function say(text, kind) {
+    var li = document.createElement("li");
+    li.textContent = text;
+    if (kind) li.className = "ev-" + kind;
+    logEl.insertBefore(li, logEl.firstChild);
+    while (logEl.children.length > 4) logEl.removeChild(logEl.lastChild);
+    live.textContent = text;
+  }
+
+  /* ---------------- flying cards ---------------- */
+
+  function localRect(el) {
+    var r = el.getBoundingClientRect();
+    var p = flyLayer.getBoundingClientRect();
+    return { left: r.left - p.left, top: r.top - p.top, width: r.width, height: r.height };
+  }
+
+  function place(node, rect) {
+    node.style.left = rect.left + "px";
+    node.style.top = rect.top + "px";
+    node.style.width = rect.width + "px";
+    node.style.height = rect.height + "px";
+    node.style.transform = "none";
+  }
+
+  function animateTo(node, from, to, opts) {
+    opts = opts || {};
+    return new Promise(function (res) {
+      if (reduce) { place(node, to); res(); return; }
+      var sx = to.width / from.width;
+      var sy = to.height / from.height;
+      var tx = (to.left + to.width / 2) - (from.left + from.width / 2);
+      var ty = (to.top + to.height / 2) - (from.top + from.height / 2);
+      var lift = opts.lift === undefined ? 34 : opts.lift;
+      var spin = opts.spin === undefined ? 4 : opts.spin;
+      var done = false;
+      var finish = function () {
+        if (done) return;
+        done = true;
+        place(node, to);
+        res();
+      };
+
+      var anim = node.animate([
+        { transform: "none" },
+        { transform: "translate(" + (tx / 2) + "px," + (ty / 2 - lift) + "px) scale(" +
+            ((1 + sx) / 2) + "," + ((1 + sy) / 2) + ") rotate(" + spin + "deg)", offset: 0.5 },
+        { transform: "translate(" + tx + "px," + ty + "px) scale(" + sx + "," + sy + ")" }
+      ], { duration: opts.dur || 680, easing: "cubic-bezier(.3,.85,.35,1)", fill: "none" });
+
+      anim.onfinish = finish;
+      anim.oncancel = finish;
+    });
+  }
+
+  // Lift a top-strip card off the board and park it at an anchor.
+  function liftCard(key, anchorEl, tone) {
+    var slot = SLOT[key];
+    var cardEl = slot.querySelector(".pec");
+    var from = localRect(cardEl);
+
+    var clone = cardEl.cloneNode(true);
+    clone.classList.remove("is-off");
+    clone.classList.add("parked", tone === "lost" ? "tone-alert" : "tone-earn");
+    flyLayer.appendChild(clone);
+    place(clone, from);
+
+    cardEl.classList.add("is-off");
+    slot.classList.remove("is-lost", "is-earned");
+    slot.classList.add(tone === "lost" ? "is-lost" : "is-earned");
+    if (key === "device") {
+      slot.setAttribute("data-empty", tone === "lost" ? "Lost — earn it back" : "In use — break");
+    }
+    FLOAT[key] = clone;
+    clone._anchor = anchorEl;
+
+    return animateTo(clone, from, localRect(anchorEl), { dur: 720 });
+  }
+
+  function moveParked(key, anchorEl) {
+    var clone = FLOAT[key];
+    if (!clone) return Promise.resolve();
+    clone._anchor = anchorEl;
+    return animateTo(clone, localRect(clone), localRect(anchorEl), { dur: 640 });
+  }
+
+  function returnCard(key) {
+    var slot = SLOT[key];
+    var cardEl = slot.querySelector(".pec");
+    var clone = FLOAT[key];
+
+    if (!clone) {
+      cardEl.classList.remove("is-off");
+      slot.classList.remove("is-lost", "is-earned");
+      return Promise.resolve();
+    }
+
+    return animateTo(clone, localRect(clone), localRect(slot), { dur: 620, lift: 26, spin: -3 })
+      .then(function () {
+        clone.remove();
+        delete FLOAT[key];
+        cardEl.classList.remove("is-off");
+        slot.classList.remove("is-lost", "is-earned");
+        if (key === "device") slot.setAttribute("data-empty", "Off the board");
+      });
+  }
+
+  /* ---------------- schedule strip ---------------- */
+
+  function buildSchedule() {
+    scheduleEl.innerHTML = "";
+    SCHEDULE.forEach(function (s, i) {
+      var row = document.createElement("div");
+      row.className = "step" + (s.type === "earn" ? " type-earn" : "");
+      row.id = "step-" + i;
+      row.innerHTML =
+        '<svg class="glyph" viewBox="0 0 48 48" fill="none" stroke="currentColor" ' +
+        'stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<use href="#' + s.glyph + '"/></svg>' +
+        '<span class="cap">' + s.label + '<span class="sub">' + s.sub + '</span></span>' +
+        '<span class="now">Now</span>';
+      scheduleEl.appendChild(row);
+    });
+  }
+
+  function setCurrent(i) {
+    for (var k = 0; k < SCHEDULE.length; k++) {
+      document.getElementById("step-" + k).classList.toggle("is-current", k === i);
+    }
+    nowStep.textContent = SCHEDULE[i].label + (SCHEDULE[i].type === "earn" ? " — break earned" : "");
+  }
+
+  function moveToDone(i) {
+    var row = document.getElementById("step-" + i);
+    var from = localRect(row);
+
+    var clone = row.cloneNode(true);
+    clone.classList.remove("is-current");
+    clone.style.transition = "none";
+    flyLayer.appendChild(clone);
+    place(clone, from);
+    row.classList.add("is-done");
+
+    var pr = localRect(pocket);
+    var target = { left: pr.left + pr.width * 0.4, top: pr.top + 8, width: 48, height: 26 };
+
+    return animateTo(clone, from, target, { dur: 560, lift: 14, spin: -6 }).then(function () {
+      clone.remove();
+      S.done++;
+      pocketCount.textContent = S.done + (S.done === 1 ? " card" : " cards");
+      pocketStack.appendChild(document.createElement("i"));
+    });
+  }
+
+  function resetStrip() {
+    for (var k = 0; k < SCHEDULE.length; k++) {
+      document.getElementById("step-" + k).classList.remove("is-done", "is-current");
+    }
+    S.done = 0;
+    pocketCount.textContent = "0 cards";
+    pocketStack.innerHTML = "";
+  }
+
+  /* ---------------- break timer ---------------- */
+
+  function showTimer(on) {
+    timerRing.setAttribute("opacity", on ? "1" : "0");
+    if (!on) nowTimer.textContent = "—";
+  }
+
+  function fmt(ms) {
+    var t = Math.max(0, Math.ceil(ms / 1000));
+    return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0");
+  }
+
+  function runBreak(ms, gen) {
+    return new Promise(function (res) {
+      var left = ms, last = performance.now();
+      showTimer(true);
+      var id = setInterval(function () {
+        if (gen !== S.gen) { clearInterval(id); showTimer(false); res("abort"); return; }
+        if (S.cutBreak) { clearInterval(id); showTimer(false); res("cut"); return; }
+        var now = performance.now(), dt = now - last;
+        last = now;
+        if (S.running) left -= dt;
+        timerArc.setAttribute("stroke-dashoffset", String(ARC_LEN * (1 - Math.max(0, left / ms))));
+        timerText.textContent = fmt(left);
+        nowTimer.textContent = fmt(left) + " left";
+        if (left <= 0) { clearInterval(id); showTimer(false); res("done"); }
+      }, 100);
+      TIMERS.push(id);
+    });
+  }
+
+  /* ---------------- sequences ---------------- */
+
+  function earnSequence(gen) {
+    var guard = function () { if (gen !== S.gen) throw "abort"; };
+
+    say("Green star — he earned the Chromebook.", "earn");
+    chip("Earned", "is-break");
+
+    return untilCalm(gen)
+      .then(function (r) { if (r === "abort") throw "abort"; return sleep(500, gen); })
+      .then(function () {
+        guard();
+        S.deviceAt = "desk";
+        return liftCard("device", ANCHOR.desk, "earned");
+      })
+      .then(function () {
+        guard();
+        setPose("walk");
+        walkTo("device");
+        say("He carries the Chromebook card to the other desk.");
+        return sleep(WALK_MS, gen);
+      })
+      .then(function () {
+        guard();
+        setPose("sit");
+        S.onDevice = true;
+        S.cutBreak = false;
+        chip("On break", "is-break");
+        return runBreak(BREAK_MS, gen);
+      })
+      .then(function (outcome) {
+        if (outcome === "abort") throw "abort";
+        guard();
+        S.onDevice = false;
+        say(outcome === "cut"
+          ? "Break ended early — the card came off."
+          : "Timer done. The card goes back up top.", outcome === "cut" ? "alert" : null);
+        setPose("walk");
+        walkTo("work");
+        return sleep(WALK_MS, gen);
+      })
+      .then(function () {
+        guard();
+        setPose(S.disrupted ? (S.disrupted === "voice" ? "yell" : "hands") : "sit");
+        if (S.deviceAt === "desk") {
+          S.deviceAt = "board";
+          return returnCard("device");
+        }
+        return null;
+      })
+      .then(function () { guard(); return untilCalm(gen); })
+      .then(function (r) {
+        if (r === "abort") throw "abort";
+        guard();
+        chip("Working", "is-calm");
+        return moveToDone(S.step);
+      });
+  }
+
+  function cycleReset(gen) {
+    say("Cycle finished. Staff resets the board.");
+    chip("Board reset", "is-break");
+    return sleep(1500, gen).then(function () {
+      if (gen !== S.gen) throw "abort";
+      resetStrip();
+      S.cycle++;
+      cycleChip.textContent = "Cycle " + S.cycle;
+      chip("Working", "is-calm");
+    });
+  }
+
+  function loop() {
+    var gen = S.gen;
+
+    function next() {
+      if (gen !== S.gen) return;
+
+      var step = SCHEDULE[S.step];
+      setCurrent(S.step);
+
+      var p;
+      if (step.type === "earn") {
+        p = earnSequence(gen);
+      } else {
+        say("Working on: " + step.label + ".");
+        p = work(step.ms, gen).then(function (r) {
+          if (r === "abort" || gen !== S.gen) throw "abort";
+          return moveToDone(S.step);
+        });
+      }
+
+      p.then(function () {
+        if (gen !== S.gen) return;
+        S.step++;
+        if (S.step >= SCHEDULE.length) {
+          return cycleReset(gen).then(function () { S.step = 0; next(); });
+        }
+        next();
+      }).catch(function (e) {
+        if (e !== "abort") console.error(e);
+      });
+    }
+
+    next();
+  }
+
+  /* ---------------- disruption + recovery ---------------- */
+
+  function disrupt(kind) {
+    if (S.disrupted) return;
+    S.disrupted = kind;
+    setPose(kind === "voice" ? "yell" : "hands");
+    chip(kind === "voice" ? "Yelling" : "Hands not safe", "is-alert");
+    ruleRow.classList.add("is-broken");
+    holdStrip.classList.add("is-holding");
+    holdNote.textContent = HOLD_FULL;
+    btnYell.disabled = true;
+    btnHands.disabled = true;
+    btnCalm.disabled = false;
+
+    say(kind === "voice"
+      ? "Yelling. Calm voice comes down — and so does the Chromebook."
+      : "Hands aren't safe. Calm hands comes down — and so does the Chromebook.", "alert");
+
+    if (S.onDevice) S.cutBreak = true;
+
+    liftCard(kind, ANCHOR.holdA, "lost").then(function () {
+      if (S.deviceAt === "board") {
+        S.deviceAt = "staff";
+        return liftCard("device", ANCHOR.holdB, "lost");
+      }
+      if (S.deviceAt === "desk") {
+        S.deviceAt = "staff";
+        SLOT.device.classList.remove("is-earned");
+        SLOT.device.classList.add("is-lost");
+        SLOT.device.setAttribute("data-empty", "Lost — earn it back");
+        return moveParked("device", ANCHOR.holdB);
+      }
+      return null;
+    });
+  }
+
+  function calmAgain() {
+    if (!S.disrupted) return;
+    var kind = S.disrupted;
+    btnCalm.disabled = true;
+
+    setPose("sit");
+    chip("Getting calm", "is-break");
+    say("Calm again. Staff hands back " +
+      (kind === "voice" ? "calm voice" : "calm hands") + " — he puts it up himself.", "earn");
+
+    returnCard(kind)
+      .then(function () { return sleep(420); })
+      .then(function () {
+        say("Then the Chromebook card goes back up.", "earn");
+        S.deviceAt = "board";
+        return returnCard("device");
+      })
+      .then(function () {
+        S.disrupted = null;
+        ruleRow.classList.remove("is-broken");
+        holdStrip.classList.remove("is-holding");
+        holdNote.textContent = HOLD_EMPTY;
+        btnYell.disabled = false;
+        btnHands.disabled = false;
+        chip("Working", "is-calm");
+        say("Back to the schedule, same card he was on.");
+      });
+  }
+
+  /* ---------------- reset ---------------- */
+
+  function resetAll() {
+    S.gen++;
+    clearTimers();
+
+    Object.keys(FLOAT).forEach(function (k) { delete FLOAT[k]; });
+    flyLayer.innerHTML = "";
+
+    ["voice", "hands", "device"].forEach(function (k) {
+      SLOT[k].querySelector(".pec").classList.remove("is-off");
+      SLOT[k].classList.remove("is-lost", "is-earned");
+    });
+    SLOT.device.setAttribute("data-empty", "Off the board");
+
+    S.running = true;
+    S.disrupted = null;
+    S.step = 0;
+    S.cycle = 1;
+    S.onDevice = false;
+    S.cutBreak = false;
+    S.deviceAt = "board";
+
+    resetStrip();
+    ruleRow.classList.remove("is-broken");
+    holdStrip.classList.remove("is-holding");
+    holdNote.textContent = HOLD_EMPTY;
+    cycleChip.textContent = "Cycle 1";
+    btnYell.disabled = false;
+    btnHands.disabled = false;
+    btnCalm.disabled = true;
+    btnPlay.textContent = "Pause";
+    showTimer(false);
+
+    studentG.style.transition = "none";
+    studentG.setAttribute("transform", "translate(0,0)");
+    setPose("sit");
+    chip("Working", "is-calm");
+
+    logEl.innerHTML = "";
+    say("Board is set. Starting the schedule.");
+
+    loop();
+  }
+
+  /* ---------------- wiring ---------------- */
+
+  btnPlay.addEventListener("click", function () {
+    S.running = !S.running;
+    btnPlay.textContent = S.running ? "Pause" : "Play";
+    if (!S.running) {
+      chip("Paused", "is-break");
+    } else if (S.disrupted) {
+      chip(S.disrupted === "voice" ? "Yelling" : "Hands not safe", "is-alert");
+    } else {
+      chip(S.onDevice ? "On break" : "Working", S.onDevice ? "is-break" : "is-calm");
+    }
+  });
+
+  btnYell.addEventListener("click", function () { disrupt("voice"); });
+  btnHands.addEventListener("click", function () { disrupt("hands"); });
+  btnCalm.addEventListener("click", calmAgain);
+  btnReset.addEventListener("click", resetAll);
+
+  // keep parked cards glued to their anchors when the layout changes
+  var resizeId;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeId);
+    resizeId = setTimeout(function () {
+      Object.keys(FLOAT).forEach(function (k) {
+        if (FLOAT[k]._anchor) place(FLOAT[k], localRect(FLOAT[k]._anchor));
+      });
+    }, 120);
+  });
+
+  buildSchedule();
+  resetAll();
+})();
+</script>
