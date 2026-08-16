@@ -7,6 +7,7 @@
      a laminated PECS card is white card stock in every room.
      ============================================================ */
   :root {
+    color-scheme: light;
     --ground:      #E6EAF0;
     --ground-2:    #F4F6FA;
     --panel:       #FFFFFF;
@@ -62,6 +63,7 @@
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
+      color-scheme: dark;
       --ground:      #0F151F;
       --ground-2:    #161F2C;
       --panel:       #18222F;
@@ -102,6 +104,7 @@
   }
 
   :root[data-theme="dark"] {
+    color-scheme: dark;
     --ground:      #0F151F;
     --ground-2:    #161F2C;
     --panel:       #18222F;
@@ -650,6 +653,47 @@
     margin-right: 4px;
   }
 
+  .picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 14px;
+    margin-right: 4px;
+    border-right: 1px solid var(--line);
+  }
+
+  .picker select {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 650;
+    color: var(--ink);
+    background-color: var(--panel);
+    border: 1.5px solid var(--ink-3);
+    border-radius: 999px;
+    padding: 9px 36px 9px 15px;
+    cursor: pointer;
+    appearance: none;
+    /* chevron drawn in the accent so the control reads as interactive */
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                      linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: right 17px center, right 12px center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+  .picker select:hover { border-color: var(--ink); }
+
+  @media (max-width: 700px) {
+    .picker {
+      flex: 1 1 100%;
+      padding-right: 0;
+      margin-right: 0;
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+    }
+    .picker select { flex: 1 1 auto; min-width: 0; }
+  }
+
   button.btn {
     font-family: var(--font-ui);
     font-size: 14px;
@@ -680,9 +724,14 @@
   }
   button.btn.earn:hover:not(:disabled) { border-color: var(--earn); }
 
-  .controls .spacer { flex: 1 1 auto; min-width: 0; }
-
-  .hint { font-size: 12.5px; color: var(--ink-3); max-width: 32ch; line-height: 1.4; }
+  /* the scenario blurb gets its own row, under the picker it describes */
+  .hint {
+    flex: 1 1 100%;
+    font-size: 13px;
+    color: var(--ink-2);
+    max-width: 74ch;
+    line-height: 1.45;
+  }
 
   #flyLayer {
     position: absolute;
@@ -905,8 +954,8 @@
     <h1>Work, Earn, Break</h1>
     <p class="dek">
       A picture schedule for Student&nbsp;C, with the Chromebook tied to calm voice and calm
-      hands. Use the buttons under the board to watch what happens when he yells or his hands
-      stop being safe.
+      hands. Pick a scenario under the board to play it through, or use the buttons to trigger
+      a moment yourself.
     </p>
     <p class="privacy">
       Draft for staff discussion. No name, date of birth, or diagnostic information —
@@ -1120,14 +1169,20 @@
     </div>
 
     <div class="controls">
-      <span class="controls-label">Try it</span>
+      <span class="picker">
+        <label class="controls-label" for="scenario">Scenario</label>
+        <select id="scenario">
+          <option value="clean">1 &mdash; Calm hands and voice</option>
+          <option value="voice">2 &mdash; Not a calm voice</option>
+          <option value="hands">3 &mdash; Not calm hands</option>
+        </select>
+      </span>
       <button class="btn" id="btnPlay" type="button">Pause</button>
       <button class="btn alert" id="btnYell" type="button">He yells</button>
       <button class="btn alert" id="btnHands" type="button">Hands not safe</button>
       <button class="btn earn" id="btnCalm" type="button" disabled>He&rsquo;s calm again</button>
       <button class="btn" id="btnReset" type="button">Start over</button>
-      <span class="spacer"></span>
-      <span class="hint">The demo runs fast so it fits a meeting. In the room, plan a 5&#8209;minute break.</span>
+      <span class="hint" id="hint"></span>
     </div>
   </section>
 
@@ -1347,6 +1402,27 @@
   var HOLD_EMPTY = "Nothing — all three cards are up.";
   var HOLD_FULL  = "He gets these back when he is calm — and he puts them up himself.";
 
+  var scenarioSel = $("#scenario");
+  var hintEl      = $("#hint");
+
+  var SCENARIOS = {
+    clean: {
+      hint: "A clean run — he works the strip and earns his break with nothing coming off the board.",
+      open: "Scenario 1. Calm hands and calm voice — starting the schedule."
+    },
+    voice: {
+      hint: "He starts yelling partway through a task. Calm voice and the Chromebook come off, then go back once he settles.",
+      open: "Scenario 2. Watch what happens when the voice isn't calm."
+    },
+    hands: {
+      hint: "His hands stop being safe partway through a task. Calm hands and the Chromebook come off, then go back once he settles.",
+      open: "Scenario 3. Watch what happens when the hands aren't safe."
+    }
+  };
+
+  var SCENARIO_INTO_TASK = 3600;  // let him settle into the work first
+  var SCENARIO_UPSET_FOR = 5400;  // long enough to read the board
+
   /* ---------------- state ---------------- */
 
   var S = {
@@ -1358,7 +1434,9 @@
     done: 0,
     onDevice: false,
     cutBreak: false,
-    deviceAt: "board" // board | desk | staff
+    deviceAt: "board", // board | desk | staff
+    scenario: "clean",
+    scenarioFired: false
   };
 
   var FLOAT = {};
@@ -1444,6 +1522,22 @@
         var now = performance.now(), dt = now - last;
         last = now;
         if (S.running && !S.disrupted) left -= dt;
+        if (left <= 0) { clearInterval(id); res("ok"); }
+      }, 60);
+      TIMERS.push(id);
+    });
+  }
+
+  // Like work(), but keeps counting while he is upset — the scripted
+  // scenarios need to time the recovery, not stall on it.
+  function waitPaused(ms, gen) {
+    return new Promise(function (res) {
+      var left = ms, last = performance.now();
+      var id = setInterval(function () {
+        if (gen !== S.gen) { clearInterval(id); res("abort"); return; }
+        var now = performance.now(), dt = now - last;
+        last = now;
+        if (S.running) left -= dt;
         if (left <= 0) { clearInterval(id); res("ok"); }
       }, 60);
       TIMERS.push(id);
@@ -1732,8 +1826,25 @@
       if (gen !== S.gen) throw "abort";
       resetStrip();
       S.cycle++;
+      S.scenarioFired = false;   // the scenario replays each cycle
       cycleChip.textContent = "Cycle " + S.cycle;
       chip("Working", "is-calm");
+    });
+  }
+
+  // Drives the picked scenario: once per cycle, partway into the first
+  // task, he loses it — then settles and gets the cards back.
+  function runScenario(gen) {
+    var kind = S.scenario;
+    if (kind === "clean") return;
+
+    waitPaused(SCENARIO_INTO_TASK, gen).then(function (r) {
+      if (r === "abort" || gen !== S.gen || S.disrupted) return;
+      disrupt(kind);
+      return waitPaused(SCENARIO_UPSET_FOR, gen).then(function (r2) {
+        if (r2 === "abort" || gen !== S.gen) return;
+        calmAgain();
+      });
     });
   }
 
@@ -1742,6 +1853,11 @@
 
     function next() {
       if (gen !== S.gen) return;
+
+      if (S.step === 0 && !S.scenarioFired) {
+        S.scenarioFired = true;
+        runScenario(gen);
+      }
 
       var step = SCHEDULE[S.step];
       setCurrent(S.step);
@@ -1859,6 +1975,9 @@
     S.onDevice = false;
     S.cutBreak = false;
     S.deviceAt = "board";
+    S.scenarioFired = false;
+
+    hintEl.textContent = SCENARIOS[S.scenario].hint;
 
     resetStrip();
     ruleRow.classList.remove("is-broken");
@@ -1877,7 +1996,7 @@
     chip("Working", "is-calm");
 
     logEl.innerHTML = "";
-    say("Board is set. Starting the schedule.");
+    say(SCENARIOS[S.scenario].open);
 
     loop();
   }
@@ -1894,6 +2013,11 @@
     } else {
       chip(S.onDevice ? "On break" : "Working", S.onDevice ? "is-break" : "is-calm");
     }
+  });
+
+  scenarioSel.addEventListener("change", function () {
+    S.scenario = scenarioSel.value;
+    resetAll();
   });
 
   btnYell.addEventListener("click", function () { disrupt("voice"); });
